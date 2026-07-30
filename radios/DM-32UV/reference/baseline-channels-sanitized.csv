@@ -1,0 +1,23 @@
+No.,Channel Name,Channel Type,RX Frequency[MHz],TX Frequency[MHz],Band Width,Scan List,TX Admit,Color Code,Time Slot,TX Contact,CTC/DCS Decode,Forbid TX,Notes
+1,ATL CDA DMR,Digital,446.96000,446.96000,12.5KHz,None,Always,1,Slot 2,ATL Canada,None,0,Hotspot-style simplex
+2,VE1DRR,Digital,443.75000,448.75000,12.5KHz,DMR,Always,1,Slot 2,ATL Canada,None,0,Primary metro DMR
+3,VE1CRA-PEI-DMR,Digital,441.65000,446.65000,12.5KHz,None,Always,1,Slot 2,ATL Canada,None,0,
+4,VE1JSR-DMR,Digital,441.80000,446.80000,12.5KHz,None,Always,1,Slot 1,ATL Canada,None,0,Slot 1 in source export
+5,VE1DAR-V,Analog,147.15000,147.75000,25KHz,VHF,Allow TX,0,Slot 1,,None,0,
+6,VE1PKT-V,Analog,146.68500,146.08500,25KHz,VHF,Allow TX,0,Slot 1,,82.5,0,
+7,VE1SHU-V,Analog,146.86500,146.26500,25KHz,VHF,Allow TX,0,Slot 1,,None,0,
+8,VE1PSR-V,Analog,147.27000,147.87000,25KHz,VHF,Allow TX,0,Slot 1,,82.5,0,
+9,VE1HNS-V,Analog,146.94000,146.34000,25KHz,VHF,Allow TX,0,Slot 1,,82.5,0,
+10,VE1CDN-V,Analog,146.97000,146.37000,25KHz,VHF,Allow TX,0,Slot 1,,None,0,
+11,Natl Simplex-V,Analog,146.52000,146.52000,25KHz,VHF,Allow TX,0,Slot 1,,None,0,
+12,SAR-V,Analog,149.08000,149.08000,25KHz,VHF,Allow TX,0,Slot 1,,None,0,Authorized use only
+13,VE1DAR-U,Analog,444.60000,449.60000,25KHz,UHF,Allow TX,0,Slot 1,,None,0,
+14,VE1PSR-U,Analog,444.35000,449.35000,25KHz,UHF,Allow TX,0,Slot 1,,None,0,
+15,VE1CDN-U,Analog,442.97500,447.97500,25KHz,UHF,Allow TX,0,Slot 1,,82.5,0,
+16,Natl Simplex-U,Analog,446.00000,446.00000,25KHz,UHF,Allow TX,0,Slot 1,,None,0,
+17,Marine WX 21B,Analog,161.65000,161.65000,25KHz,WX-CH,Allow TX,0,Slot 1,,None,1,Listen only
+18,Marine WX 23B,Analog,161.75000,161.75000,25KHz,WX-CH,Allow TX,0,Slot 1,,None,1,Listen only
+19,Marine WX 25B,Analog,161.85000,161.85000,25KHz,WX-CH,Allow TX,0,Slot 1,,None,1,Listen only
+20,Marine WX 26,Analog,161.90000,161.90000,25KHz,WX-CH,Allow TX,0,Slot 1,,None,1,Listen only
+21,Marine WX 83B,Analog,161.77500,161.77500,25KHz,WX-CH,Allow TX,0,Slot 1,,None,1,Listen only
+22,Marine DISTRESS,Analog,156.80000,156.80000,25KHz,None,Allow TX,0,Slot 1,,None,1,Ch16 listen only

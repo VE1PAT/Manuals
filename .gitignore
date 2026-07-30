@@ -1,0 +1,12 @@
+# Ignore OS junk; keep manuals and notes
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+~$*
+
+# Do not commit secrets or member PII
+*.env
+*password*
+*secret*
+codeplugs/*-personal.*
