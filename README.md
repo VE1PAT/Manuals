@@ -37,17 +37,9 @@ Educational operating manuals and training topics for amateur radio members.
 |-------|--------|
 | Yaesu ATAS-120A | [antennas/Yaesu-ATAS-120A](antennas/Yaesu-ATAS-120A/) |
 
-## Branding
-
-Document titles should identify both clubs, for example:
-
-> Halifax & Dartmouth Amateur Radio Clubs — DM-32UV Operating Manual
-
 ## Conventions
 
 - Prefer Markdown sources that can be printed or exported to PDF.
 - Keep each radio’s codeplug notes and regional repeater info with that radio’s folder.
 - Do not commit personal DMR IDs, passwords, or member PII.
-- Frame materials around **learning and operating**, not equipment logistics.
 - **Depth:** Analog FM = brief (unless a model has quirks). Digital modes and special features (APRS, C4FM, DMR, HF SDR tools, ATAS, etc.) = deep educational coverage.
-- **Deep examples so far:** `radios/DM-32UV/` (DMR), `radios/Kenwood-TH-D72A/` (APRS + packet/Winlink/PC). Cross-radio USB/serial: `topics/pc-radio-connectivity/`. Other model folders may still be v0.1 scaffolds.
