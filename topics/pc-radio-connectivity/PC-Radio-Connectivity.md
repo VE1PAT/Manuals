@@ -1,7 +1,7 @@
 # Halifax & Dartmouth Amateur Radio Clubs  
 # PC ↔ Radio Connectivity (training overview)
 
-**Audience:** New operators connecting *any* club radio to a computer  
+**Audience:** New operators connecting a radio to a computer  
 **Version:** 0.1  
 **Scope:** Concepts shared across radios. Each radio manual adds model-specific cables, drivers, and software.
 
@@ -91,4 +91,4 @@ A radio may support one or more of these. **Using the wrong mental model** (expe
 
 ## Annex
 
-Club training overview. Radio OEM manuals remain authoritative for pinouts and official drivers.
+Training overview. Radio OEM manuals remain authoritative for pinouts and official drivers.

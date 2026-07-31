@@ -1,4 +1,4 @@
-﻿# Halifax & Dartmouth Amateur Radio Clubs  
+# Halifax & Dartmouth Amateur Radio Clubs  
 # Kenwood TH-D72A Operating Manual
 
 **Kenwood TH-D72A — training handbook**  
@@ -14,7 +14,7 @@ FM voice briefly; **settings, APRS, GPS, packet/Winlink, PC link, and special fe
 | **Version** | 0.4 |
 | **Companion** | [`topics/pc-radio-connectivity/`](../../topics/pc-radio-connectivity/) — USB/serial ideas shared by many radios |
 
-**Scope:** Club **education** that **enhances** (does not replace) the Kenwood manuals. Analog FM is brief. Weight is on settings clarity, APRS/GPS, and **using the built-in TNC with a computer** (packet / Winlink).
+**Scope:** **Education** that **enhances** (does not replace) the Kenwood manuals. Analog FM is brief. Weight is on settings clarity, APRS/GPS, and **using the built-in TNC with a computer** (packet / Winlink).
 
 ### How this manual is weighted
 
@@ -114,7 +114,7 @@ MCP-4A can **read** the radio and export an HTML “TH-D72 Information” report
 3. Edit  
 4. **Write** to radio only when deliberate  
 
-Never treat an Elmer’s personal export as a shared club file — strip callsigns and private DTMF/EchoLink codes first.
+Never treat an Elmer’s personal export as a shared file — strip callsigns and private DTMF/EchoLink codes first.
 
 ### Front-panel vs MCP-4A
 
@@ -208,7 +208,7 @@ One quick-access **Call** channel per band (typically 144 MHz and 440 MHz). The 
 | Use | Example |
 |---|---|
 | National simplex parking spot | 146.520 / 446.000 |
-| Club “meet me” frequency | Whatever the class agrees |
+| Class “meet me” frequency | Whatever the class agrees |
 
 Fields match memory channels (freq, offset, tones, shift, mode). Keep Call channels **simple** and well known — they are for speed, not a second memory bank.
 
@@ -252,8 +252,8 @@ Everyday radio behaviour. MCP-4A groups these under **Radio (AUX)**, **Transmit/
 | Setting | What it does / how to use it |
 |---|---|
 | **Power-on Custom Start-up Screen** / **Bitmap File** | Optional splash graphic at power-on. Fun, not required for class. |
-| **Message** | Power-on text line (keep generic on shared radios — not a personal callsign billboard unless intentional). |
-| **Password** | Locks radio use behind a code. Off for training radios unless theft risk warrants it. |
+| **Message** | Power-on text line (optional personalization — keep it appropriate for your use). |
+| **Password** | Locks radio use behind a code. Leave Off unless you need theft deterrence. |
 | **Contrast** | LCD contrast. Raise outdoors in glare; don’t max it until unreadable. |
 | **Lamp Timer** | How long the backlight stays on after a keypress. Shorter = battery. |
 | **Cursor Shift** | Auto-moves editing cursor after a timeout while programming. Off = you move the cursor yourself. |
@@ -312,7 +312,7 @@ Everyday radio behaviour. MCP-4A groups these under **Radio (AUX)**, **Transmit/
 
 Programmable function keys on mic and panel (PF1–PF3 / Panel PF1). Assign shortcuts students actually need (examples: **A/B**, **VFO**, **MR**, **WX**, APRS-related jumps if offered).
 
-**Teaching tip:** standardize PF keys on club radios so muscle memory transfers.
+**Teaching tip:** standardize PF keys across similar radios so muscle memory transfers.
 
 ### Radio (Lock)
 
@@ -502,7 +502,7 @@ These control **what you accept** and **how your packets are addressed** through
 | Needs | Voice Alert enabled; matching CTCSS (often 100.0 Hz); **1200 bps** data speed |
 | Broken by | **9600 bps** packet speed (tone demodulation suffers) |
 | Tone key | When APRS + Voice Alert are configured, Voice Alert appears in the **[TONE]** cycle with Tone/CTCSS/DCS |
-| Club default | **Off** unless your local group actually uses it |
+| Recommended default | **Off** unless your local group actually uses it |
 
 ### Seeing other stations (list literacy)
 
@@ -612,7 +612,7 @@ Used only when **Method = SmartBeaconing**. When SmartBeaconing is selected, **I
 
 **NAVITRA** is a **Japanese** position/messaging system that also uses packet-like beacons. Kenwood included NAVITRA menus so the same radio hardware can serve that market.
 
-| For HARC / DARC | Guidance |
+| For local NA use | Guidance |
 |---|---|
 | Do we use it in Nova Scotia? | **No** — local practice is **APRS** on **144.390** |
 | Why are the menus there? | Shared firmware with TH-D72E / global product line |
@@ -655,7 +655,7 @@ Canned phrases for composing APRS messages quickly (short strings). Pre-load cla
 
 ### NAVITRA Message
 
-Message slots for NAVITRA — skip for NA club work.
+Message slots for NAVITRA — skip for North American use.
 
 ---
 
@@ -751,7 +751,7 @@ You can still:
 
 - Use the serial device for **packet / Pat / kissattach** (Chapter 21)  
 - Use community tools that speak Kenwood protocols (advanced)  
-- Keep a Windows VM or club laptop for MCP-4A backups if you do not want to fight wine/VMs on day one  
+- Keep a Windows VM or spare Windows PC for MCP-4A backups if you do not want to fight wine/VMs on day one  
 
 ---
 
@@ -771,7 +771,7 @@ For Winlink / classic packet: **[TNC]** until the display shows **PACKET** (ofte
 
 Kenwood’s CD-ROM manual includes a long **TNC COMMANDS LIST** (`MYCALL`, `KISS`, `HBAUD`, `CONNECT`, …). That is a **reference dump** for the `cmd:` style TNC — useful when you open a serial terminal to the radio.
 
-This club book does **not** reprint that encyclopedia. You need:
+This handbook does **not** reprint that encyclopedia. You need:
 
 | Command / idea | Why |
 |---|---|
@@ -800,7 +800,7 @@ Match the published RMS / node speed. Wrong speed = you TX into silence.
 2. Tune that band to the **packet or Winlink gateway frequency** (not 144.390 unless that gateway really is there).  
 3. Store a memory (e.g. label `WinlinkV` / `PacketU`) once you know the local channel.  
 
-Ask club Elmers for current Nova Scotia / Maritime gateway frequencies — they change; this manual does not hard-code a living list.
+Ask local Elmers for current Nova Scotia / Maritime gateway frequencies — they change; this manual does not hard-code a living list.
 
 ### Manual terminal smoke test (any OS)
 
@@ -826,7 +826,7 @@ If this fails, fix cables/drivers/mode before blaming Winlink software.
 4. Known **RMS gateway** frequency, SSID (often `-10`), and baud.  
 5. Software below.
 
-### Windows — Winlink Express (typical club path)
+### Windows — Winlink Express (typical path)
 
 1. Install VCP driver; note COM port.  
 2. Install **Winlink Express**.  
@@ -834,7 +834,7 @@ If this fails, fix cables/drivers/mode before blaming Winlink software.
 4. In Express, configure a **Packet Winlink** session using the Kenwood / KISS-style TNC options appropriate to the D72 (select the COM port; follow current Express UI labels — they evolve).  
 5. Start session → connect to `GATEWAY-10` (example form) → send a test message to yourself.
 
-Club tip: practice once at a meeting where an Elmer can hear whether you are keying and whether the gateway answers.
+Tip: practice once with an Elmer who can hear whether you are keying and whether the gateway answers.
 
 ### Linux / Raspberry Pi — Pat + AX.25 (typical)
 
@@ -878,7 +878,7 @@ Kenwood offers reset styles (key combo vs menu). Know before you use them:
 | Partial / menu resets | Selected settings |
 | Full transceiver reset | Memories, APRS config, almost everything |
 
-**Training habit:** MCP-4A backup **before** any reset. After reset, reload the club or student file.
+**Training habit:** MCP-4A backup **before** any reset. After reset, reload your saved settings file.
 
 ### Firmware
 
@@ -886,7 +886,7 @@ Kenwood offers reset styles (key combo vs menu). Know before you use them:
 2. Download firmware only from **Kenwood’s official** update path.  
 3. Follow their steps exactly (battery charged, cable solid, do not interrupt).  
 
-Club radios: note the version on a label or inventory sheet after updates.
+After a firmware update, note the version somewhere you will find it later.
 
 ---
 

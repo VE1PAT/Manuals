@@ -1,4 +1,4 @@
-﻿# Halifax & Dartmouth Amateur Radio Clubs  
+# Halifax & Dartmouth Amateur Radio Clubs  
 # Motorola GM300 Operating Manual
 
 **Motorola GM300 — training handbook**  
@@ -12,7 +12,7 @@ Education-focused operating guide for HARC / DARC members
 | **Equipment** | Motorola GM300 (Mobile (commercial)) |
 | **Version** | 0.1 |
 
-**Scope:** Club **education** — safe, legal operation and basic programming/setup. Equipment logistics are out of scope.
+**Scope:** **Education** — safe, legal operation and basic programming/setup.
 
 ### Publication and privacy
 
@@ -50,7 +50,7 @@ Commercial land-mobile VHF or UHF radio often reused in amateur service after pr
 
 ## Chapter 4 — Regional (Halifax–Dartmouth) practice notes
 
-Only operate on frequencies/modes authorized by your licence and a legal codeplug. Club training units should already be programmed for amateur use.
+Only operate on frequencies/modes authorized by your licence and a legal codeplug. Use only a legal amateur codeplug.
 
 Useful analog starting points for VHF/UHF voice training (verify tones/offsets before transmit):
 
@@ -61,7 +61,7 @@ Useful analog starting points for VHF/UHF voice training (verify tones/offsets b
 | VE1HNS | 146.940− | Halifax ARC |
 | National simplex | 146.520 / 446.000 | As appropriate to the radio |
 
-HF-capable gear: follow band plans and club HF mentoring — not the VHF table above.
+HF-capable gear: follow band plans and seek HF mentoring — not the VHF table above.
 
 ---
 
@@ -94,7 +94,7 @@ HF-capable gear: follow band plans and club HF mentoring — not the VHF table a
 | Make / model | Motorola GM300 |
 | Type | Mobile (commercial) |
 | Primary training use | See Chapter 1 |
-| Club docs folder | `radios/Motorola-GM300` |
+| Docs folder | `radios/Motorola-GM300` |
 
 ---
 
@@ -110,13 +110,13 @@ Expand with hands-on steps from classroom sessions and the official manual.
 
 ## Annex — Sources and acknowledgements
 
-This handbook is **original club training material**. It paraphrases public technical facts; it does not copy commercial Nifty texts or random Amazon guides.
+This handbook is **original training material**. It paraphrases public technical facts; it does not copy commercial Nifty texts or random Amazon guides.
 
 | Source | Use |
 |---|---|
 | Motorola GM300 service / RSS documentation (historical) | Training reference |
 | ISED amateur operating rules | Training reference |
-| Club Elmer guidance for converted mobiles | Training reference |
+| Elmer guidance for converted mobiles | Training reference |
 | Official manufacturer manual for this model | Authoritative menus and specs — keep a copy with the training set |
 
 *Independent educational material for Halifax & Dartmouth Amateur Radio Clubs. Not affiliated with or endorsed by the equipment manufacturers.*

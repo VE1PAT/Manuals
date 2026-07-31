@@ -1,4 +1,4 @@
-﻿# Halifax & Dartmouth Amateur Radio Clubs — Alinco DJ-V57
+# Halifax & Dartmouth Amateur Radio Clubs — Alinco DJ-V57
 
 Educational materials for learning the **Alinco DJ-V57**.
 
@@ -12,6 +12,6 @@ Educational materials for learning the **Alinco DJ-V57**.
 
 ## Still to refine
 
-- Confirm exact unit variant in club inventory
-- Add photos of the club’s actual front panel if helpful
+- Confirm exact unit variant / firmware as needed
+- Add front-panel photos if helpful
 - Expand programming steps once a classroom codeplug exists

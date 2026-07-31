@@ -1,6 +1,6 @@
-﻿# Antennas
+# Antennas
 
-Training manuals for antennas and related RF accessories used in club education.
+Training manuals for antennas and related RF accessories.
 
 | Folder | Equipment |
 |--------|-----------|

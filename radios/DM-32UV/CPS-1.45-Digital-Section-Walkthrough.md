@@ -1,8 +1,8 @@
 # CPS 1.45 — Digital section walkthrough (DM-32UV)
 
-**Software:** Baofeng CPS DMR **V1.45** (club standard — do not use 1.60 for the shared baseline yet)  
-**Goal:** Build / maintain the club digital baseline for VE1DRR  
-**Audience:** Members maintaining the shared codeplug (not everyday operators)
+**Software:** Baofeng CPS DMR **V1.45** (recommended — do not use 1.60 for the example baseline yet)  
+**Goal:** Build / maintain an example digital baseline for VE1DRR  
+**Audience:** Operators maintaining an example/training codeplug (not everyday operators)
 
 This guide matches the **Digital** tree in CPS 1.45:
 
@@ -165,7 +165,7 @@ If RX Group List is empty / None / too narrow, you may:
 - Miss other group traffic you expected to hear on that RF channel, or  
 - Only hear the single TG you transmit to (depending on settings)
 
-### Club starting point
+### Starting point
 
 1. Open **RX Group List**.  
 2. Edit **RX Group 1** (or create `VE1DRR Listen`).  
@@ -201,11 +201,11 @@ Do **not** put Private Call entries (Parrot, APRS) in an RX group list — those
 
 Commercial-style emergency alarm / emergency call configurations (panic, emergency indicator, related channel behaviour).
 
-### Club action
+### Recommended action
 
 **Do not configure. Do not assign to channels.**  
 
-Leave factory defaults / empty. Skip any guide that starts with “set up Emergency System” unless your clubs adopt a formal EmComm SOP later (separate topic manual).
+Leave factory defaults / empty. Skip any guide that starts with “set up Emergency System” unless a formal EmComm SOP is adopted later (separate topic manual).
 
 ---
 
@@ -217,7 +217,7 @@ Leave factory defaults / empty. Skip any guide that starts with “set up Emerge
 
 AES / ARC4 / custom key storage for encrypted digital voice.
 
-### Club action
+### Recommended action
 
 **Leave empty. Do not enable Encryption on any amateur channel.**
 
@@ -233,7 +233,7 @@ Encrypted amateur transmissions are not appropriate for normal HARC/DARC use and
 
 Pre-written DMR SMS strings (canned messages) you can send quickly from the radio menu.
 
-### Club action
+### Recommended action
 
 **Optional.** Examples if you want them later:
 

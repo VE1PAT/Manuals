@@ -1,6 +1,6 @@
-﻿# Radios
+# Radios
 
-One subfolder per radio model covered by club **training** materials.
+One subfolder per radio model covered by these **training** materials.
 
 | Folder | Equipment |
 |--------|-----------|
@@ -9,8 +9,8 @@ One subfolder per radio model covered by club **training** materials.
 | `Azden-PCS-6000H/` | Azden PCS-6000H |
 | `Baofeng-UV-5R-Mini/` | Baofeng UV-5R Mini |
 | `Baofeng-UV-5RX/` | Baofeng UV-5RX |
-| `Kenwood-TH-D72A/` | Kenwood TH-D72A (club list: TH-72A) |
-| `Kenwood-TH-G71A/` | Kenwood TH-G71A (club list: G71A) |
+| `Kenwood-TH-D72A/` | Kenwood TH-D72A (also called TH-72A) |
+| `Kenwood-TH-G71A/` | Kenwood TH-G71A (also called G71A) |
 | `Motorola-GM300/` | Motorola GM300 |
 | `Yaesu-FT-450/` | Yaesu FT-450 / FT-450D |
 | `Yaesu-FT-710/` | Yaesu FT-710 |

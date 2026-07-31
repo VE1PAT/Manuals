@@ -12,12 +12,12 @@ From zero to working on local analog repeaters and **VE1DRR** DMR
 | **Radio** | Baofeng DM-32UV (analog + DMR Tier II, GPS, digital APRS) |
 | **Version** | 0.5 |
 
-**Scope:** Club **education** — how to operate and program the DM-32UV for local analog and VE1DRR DMR.
+**Scope:** **Education** — how to operate and program the DM-32UV for local analog and VE1DRR DMR.
 
 ### Publication and privacy
 
 - This handbook has **no personal author byline**. Do not add individual names, callsigns, emails, or home paths to distributed copies.
-- When exporting to PDF, DOCX, or print tooling, leave **Author / Manager / Company / Keywords** metadata **blank**. Do not embed club or personal identity in file properties.
+- When exporting to PDF, DOCX, or print tooling, leave **Author / Manager / Company / Keywords** metadata **blank**. Do not embed personal identity in file properties.
 - Do not distribute personal `.data` codeplugs in shared folders or this repo.
 
 Sources used while compiling this handbook are listed in **Annex F**.
@@ -71,13 +71,13 @@ For this course of study you need:
 The working baseline uses **one primary talkgroup contact** — **ATL Canada (30205)** — on the VE1DRR (and related) digital channels.  
 That means:
 
-- Selecting channel **VE1DRR** and pressing PTT calls **30205** (Atlantic Canada). Perfect for club DMR nets.  
+- Selecting channel **VE1DRR** and pressing PTT calls **30205** (Atlantic Canada). Perfect for local DMR nets on TG 30205.  
 - Other talkgroups (**3021**, **302**, **91**, parrot **9990**, etc.) are reached with **Manual Dial** (Chapter 8) or dedicated channels once added.  
 - To **leave** a linked TG before switching: **group call 4000** (Chapter 8).
 
 ### Legal reminder
 
-You may only transmit if you hold a valid licence. Identify with your callsign. Follow ISED rules and club repeater etiquette.  
+You may only transmit if you hold a valid licence. Identify with your callsign. Follow ISED rules and local repeater etiquette.  
 **Do not transmit** on marine distress or marine broadcast channels. Those memories are for monitoring.
 
 ---
@@ -149,7 +149,7 @@ BrandMeister uses the worldwide **DMR ID** issued by [radioid.net](https://radio
 ## Chapter 4 — Put your DMR ID into the radio (CPS)
 
 You need a Windows PC and the programming cable.  
-**Do not use CHIRP.** Use Baofeng **CPS** for the DM-32UV (official download area). Club standard: **CPS 1.45**.
+**Do not use CHIRP.** Use Baofeng **CPS** for the DM-32UV (official download area). Recommended: **CPS 1.45**.
 
 ### Golden rules
 
@@ -180,7 +180,7 @@ For the full Digital menu tree in CPS 1.45, see [`CPS-1.45-Digital-Section-Walkt
 1. Register at [https://brandmeister.network](https://brandmeister.network).  
 2. Link the same DMR ID you put in the radio.  
 3. Open **SelfCare**.  
-4. Club default for DM-32UV APRS / SMS:  
+4. Recommended default for DM-32UV APRS / SMS:  
    - **Brand:** Motorola (matches CPS **M-SMS**)  
    - **APRS Callsign:** your callsign with SSID `-7` (handheld)  
    - **APRS Icon:** person / handheld  
@@ -205,7 +205,7 @@ Analog memories are already programmed. Goal: a successful FM contact without CP
 | VE1HNS-V | Analog | 146.940 | 146.340 | 82.5 |
 | VE1CDN-V | Analog | 146.970 | 146.370 | None |
 | Natl Simplex-V | Analog | 146.520 | 146.520 | None |
-| SAR-V | Analog | 149.080 | 149.080 | None — **club/authorized use only** |
+| SAR-V | Analog | 149.080 | 149.080 | None — **authorized use only** |
 | VE1DAR-U | Analog | 444.600 | 449.600 | None |
 | VE1PSR-U | Analog | 444.350 | 449.350 | None |
 | VE1CDN-U | Analog | 442.975 | 447.975 | 82.5 |
@@ -562,7 +562,7 @@ Include VE1DAR / VE1PSR / VE1HNS / VE1CDN / VE1PKT / VE1SHU / national simplex. 
 
 21B, 23B, 25B, 26, 83B, and Ch 16 — TX inhibited.
 
-### Recommended additions to the shared baseline
+### Recommended additions to the example baseline
 
 Full CPS field list: [`reference/recommended-ve1drr-channels.md`](reference/recommended-ve1drr-channels.md)  
 Digital menu meanings (CPS 1.45): [`CPS-1.45-Digital-Section-Walkthrough.md`](CPS-1.45-Digital-Section-Walkthrough.md)
@@ -587,7 +587,7 @@ Always verify additions against current trustee / directory listings before writ
 | VE1MTT | 147.045+ | Fix/replace bad memory |
 | VE1MHR | 147.030 | Musquodoboit Harbour area |
 | VE1ESR | 145.450 | Sheet Harbour area |
-| VE1PSR 6 m | 53.550− (tone often 151.4) | Only if the club codeplug includes 6 m |
+| VE1PSR 6 m | 53.550− (tone often 151.4) | Only if your codeplug includes 6 m |
 
 ---
 
@@ -616,22 +616,22 @@ Always verify additions against current trustee / directory listings before writ
 | 0.2 | 2026-07-30 | Working channel map; Manual Dial emphasis; marine WX; sources annex; privacy/metadata note |
 | 0.3 | 2026-07-30 | BrandMeister **group 4000** leave/join workflow; recommended VE1DRR channel set |
 | 0.4 | 2026-07-31 | Renamed to Operating Manual; equipment logistics removed from docs |
-| 0.5 | 2026-07-31 | Reframed as club education / training materials |
+| 0.5 | 2026-07-31 | Reframed as education / training materials |
 
-Update Appendix B whenever the shared baseline codeplug changes.
+Update Appendix B whenever the example baseline codeplug changes.
 
 ---
 
 ## Annex F — Sources and acknowledgements
 
-This handbook is **original club training material**. It combines public technical facts, manufacturer documentation, network documentation, and a sanitized reading of a local working codeplug. It is **not** a copy of any commercial book (including Nifty Guides or third-party Amazon “complete guides”).
+This handbook is **original training material**. It combines public technical facts, manufacturer documentation, network documentation, and a sanitized reading of a local working codeplug. It is **not** a copy of any commercial book (including Nifty Guides or third-party Amazon “complete guides”).
 
 ### Primary sources consulted
 
 | Source | What was used |
 |---|---|
 | Baofeng **DM-32UV User Manual** (manufacturer PDF) | Menu concepts; Manual Dial / Contacts / private vs group call behaviour; APRS menu terminology; feature list (GPS, digital APRS via DMR SMS, no claim of FM AFSK APRS) |
-| Jay Farlow, W9LW — “Programming the Baofeng DM-32UV” series (baofengradio.com blog, Parts 1–7) | CPS workflow warnings (especially avoid **File → New** / Chinese menus); BrandMeister APRS/SMS setup pattern (M-SMS + SelfCare brand); general codeplug teaching order. **Not copied verbatim**; procedures were rewritten for club training use |
+| Jay Farlow, W9LW — “Programming the Baofeng DM-32UV” series (baofengradio.com blog, Parts 1–7) | CPS workflow warnings (especially avoid **File → New** / Chinese menus); BrandMeister APRS/SMS setup pattern (M-SMS + SelfCare brand); general codeplug teaching order. **Not copied verbatim**; procedures were rewritten for training use |
 | BrandMeister Canada wiki | Talkgroup numbers (302, 3021, 30205, etc.); ARS/GPS ID **302999**; VE1DRR listing (302441, 443.750, CC 1, +5 MHz) |
 | BrandMeister / community DMR operating notes on TG **4000** | Disconnect is a **group call** to 4000 for dynamic talkgroups (not the same as private-call reflector unlink); static TGs are unaffected; use a gap and a firm PTT so the network registers the drop |
 | BrandMeister network device page for 302441 | Cross-check of VE1DRR network presence |

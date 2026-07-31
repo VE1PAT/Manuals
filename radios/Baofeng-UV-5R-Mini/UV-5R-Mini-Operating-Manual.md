@@ -1,4 +1,4 @@
-﻿# Halifax & Dartmouth Amateur Radio Clubs  
+# Halifax & Dartmouth Amateur Radio Clubs  
 # Baofeng UV-5R Mini Operating Manual
 
 **Baofeng UV-5R Mini — training handbook**  
@@ -12,7 +12,7 @@ Education-focused operating guide for HARC / DARC members
 | **Equipment** | Baofeng UV-5R Mini (HT) |
 | **Version** | 0.1 |
 
-**Scope:** Club **education** — safe, legal operation and basic programming/setup. Equipment logistics are out of scope.
+**Scope:** **Education** — safe, legal operation and basic programming/setup.
 
 ### Publication and privacy
 
@@ -61,7 +61,7 @@ Useful analog starting points for VHF/UHF voice training (verify tones/offsets b
 | VE1HNS | 146.940− | Halifax ARC |
 | National simplex | 146.520 / 446.000 | As appropriate to the radio |
 
-HF-capable gear: follow band plans and club HF mentoring — not the VHF table above.
+HF-capable gear: follow band plans and seek HF mentoring — not the VHF table above.
 
 ---
 
@@ -94,7 +94,7 @@ HF-capable gear: follow band plans and club HF mentoring — not the VHF table a
 | Make / model | Baofeng UV-5R Mini |
 | Type | HT |
 | Primary training use | See Chapter 1 |
-| Club docs folder | `radios/Baofeng-UV-5R-Mini` |
+| Docs folder | `radios/Baofeng-UV-5R-Mini` |
 
 ---
 
@@ -110,7 +110,7 @@ Expand with hands-on steps from classroom sessions and the official manual.
 
 ## Annex — Sources and acknowledgements
 
-This handbook is **original club training material**. It paraphrases public technical facts; it does not copy commercial Nifty texts or random Amazon guides.
+This handbook is **original training material**. It paraphrases public technical facts; it does not copy commercial Nifty texts or random Amazon guides.
 
 | Source | Use |
 |---|---|

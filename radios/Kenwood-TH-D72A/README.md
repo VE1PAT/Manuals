@@ -1,6 +1,6 @@
-﻿# Halifax & Dartmouth Amateur Radio Clubs — Kenwood TH-D72A
+# Halifax & Dartmouth Amateur Radio Clubs — Kenwood TH-D72A
 
-Educational handbook for the **Kenwood TH-D72A** (listed in inventory as TH-72A).
+Educational handbook for the **Kenwood TH-D72A** (also called TH-72A).
 
 **Title:** Halifax & Dartmouth Amateur Radio Clubs — Kenwood TH-D72A Operating Manual
 

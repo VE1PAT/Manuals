@@ -1,4 +1,4 @@
-﻿# Halifax & Dartmouth Amateur Radio Clubs — Kenwood TH-G71A
+# Halifax & Dartmouth Amateur Radio Clubs — Kenwood TH-G71A
 
 Educational materials for learning the **Kenwood TH-G71A**.
 
@@ -12,6 +12,6 @@ Educational materials for learning the **Kenwood TH-G71A**.
 
 ## Still to refine
 
-- Confirm exact unit variant in club inventory
-- Add photos of the club’s actual front panel if helpful
+- Confirm exact unit variant / firmware as needed
+- Add front-panel photos if helpful
 - Expand programming steps once a classroom codeplug exists
