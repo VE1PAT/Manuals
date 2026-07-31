@@ -35,6 +35,7 @@ Educational operating manuals and training topics for amateur radio members.
 
 | Model | Folder |
 |-------|--------|
+| Miracle Whip | [antennas/Miracle-Whip](antennas/Miracle-Whip/) |
 | Yaesu ATAS-120A | [antennas/Yaesu-ATAS-120A](antennas/Yaesu-ATAS-120A/) |
 
 ## Conventions

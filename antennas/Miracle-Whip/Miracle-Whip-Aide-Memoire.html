@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Miracle Whip — Operating Aide-Mémoire</title>
+<style>
+  @page { size: letter; margin: 0.55in; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0.55in;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.32;
+    color: #000;
+    background: #fff;
+  }
+  h1 {
+    margin: 0 0 0.12em;
+    font-size: 16pt;
+    font-weight: 700;
+    border-bottom: 2px solid #000;
+    padding-bottom: 0.2em;
+  }
+  h2 {
+    margin: 0.9em 0 0.35em;
+    font-size: 12pt;
+    font-weight: 700;
+    border-bottom: 1px solid #000;
+    padding-bottom: 0.12em;
+    page-break-after: avoid;
+  }
+  p { margin: 0.3em 0; }
+  .meta { margin: 0.35em 0 0.7em; font-size: 9.5pt; }
+  .box {
+    border: 1.5px solid #000;
+    padding: 0.4em 0.55em;
+    margin: 0.45em 0;
+    page-break-inside: avoid;
+  }
+  .box.important { border-width: 2px; }
+  ol.steps, ul { margin: 0.25em 0 0.45em 1.2em; padding: 0; }
+  ol.steps > li, ul > li { margin: 0.28em 0; page-break-inside: avoid; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.4em 0 0.6em;
+    font-size: 10pt;
+    page-break-inside: avoid;
+  }
+  th, td {
+    border: 1px solid #000;
+    padding: 0.28em 0.4em;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: #eee; font-weight: 700; }
+  .cols { display: flex; gap: 0.8em; }
+  .cols > div { flex: 1; }
+  .footer {
+    margin-top: 1em;
+    font-size: 8.5pt;
+    border-top: 1px solid #000;
+    padding-top: 0.35em;
+  }
+  @media print {
+    body { padding: 0; }
+    a { color: #000; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Miracle Whip — Operating Aide-Mémoire</h1>
+<p class="meta">
+  <strong>Halifax &amp; Dartmouth Amateur Radio Clubs</strong> · portable QRP whip · v0.1<br>
+  Also covers near-identical commercial units such as the Moonraker <strong>Whizz Whip</strong> (HF/VHF/UHF).
+</p>
+
+<div class="box important">
+  <strong>What it is:</strong> A short telescoping whip on a small box with a <em>variable loading / matching</em> control
+  (dial moves a tap on a toroidal inductor) and a male <strong>PL-259</strong> that plugs into the radio’s SO-239.
+  Designed for QRP portables (classic companion to FT-817-class rigs). Covers roughly
+  <strong>HF through UHF</strong> when whip length and dial are set correctly — not a miracle of efficiency, but very convenient.
+</div>
+
+<h2>Hard limits</h2>
+<table>
+  <tr><th>Item</th><th>Guidance</th></tr>
+  <tr><td>Power</td><td><strong>Keep to QRP.</strong> Moonraker sheet: <strong>10 W max</strong> (their note also mentions 25 W PEP SSB). Prefer ≤5–10 W and watch heat/SWR. Do not run a 100 W radio into this whip.</td></tr>
+  <tr><td>Connector</td><td>Male <strong>PL-259</strong> → radio SO-239 (or short coax jumper if you want the whip remote from the radio).</td></tr>
+  <tr><td>Whip</td><td>~48 in / ~130 cm telescopic. Fully extend for most HF; shorten toward ¼-wave (or ¾-wave) on VHF/UHF.</td></tr>
+  <tr><td>Counterpoise</td><td><strong>Not required</strong> for basic use. A ¼-wave wire clipped to the radio ground / chassis often helps on HF.</td></tr>
+</table>
+
+<h2>Quick start — HF</h2>
+<ol class="steps">
+  <li>Plug the whip into the radio (firm SO-239 mate; support the radio so the connector is not levered).</li>
+  <li>Set power low (start at 1–5 W). Select band / frequency.</li>
+  <li><strong>Extend the whip fully</strong> for HF (unless you already know a shorter setting for that band).</li>
+  <li><strong>Receive first:</strong> turn the tuning dial for a peak in band noise or the signal you are listening to.</li>
+  <li><strong>Fine with whip:</strong> tweak telescopic length a little for a sharper receive peak if needed.</li>
+  <li>Key briefly (CW carrier / FM / tune tone as your licence and mode allow) and use the radio’s <strong>SWR meter</strong> (or external meter) to touch up dial ± a click and whip length for lowest SWR.</li>
+  <li>Write down dial + whip notes for that band (cheat sheet below).</li>
+</ol>
+
+<div class="box">
+  <strong>Order that works:</strong> noise/signal peak on receive → short TX check → minimize SWR.
+  Do not “tune by ear” on transmit at high power.
+</div>
+
+<h2>Quick start — VHF / UHF</h2>
+<ol class="steps">
+  <li>Set the dial to the <strong>VHF mark / “dot”</strong> (or top of the inductor range). On these bands the loading coil is largely bypassed / shunted; <strong>whip length does the work</strong>.</li>
+  <li>Set whip near <strong>¼-wave</strong> at the operating frequency (¾-wave is an option on 2 m if length allows — can show useful gain vs ¼-wave).</li>
+  <li>Check SWR and trim whip length. Expect grounding / how you hold the radio to change the reading.</li>
+</ol>
+
+<table>
+  <tr><th>Band (approx.)</th><th>¼-wave length (rule of thumb)</th></tr>
+  <tr><td>2 m (146 MHz)</td><td>~49 cm / 19 in</td></tr>
+  <tr><td>70 cm (445 MHz)</td><td>~16 cm / 6.5 in (often one short section — trim carefully)</td></tr>
+  <tr><td>6 m (50 MHz)</td><td>~1.4 m — may need added tip wire beyond the stock whip</td></tr>
+</table>
+
+<h2>What the two controls do</h2>
+<table>
+  <tr><th>Control</th><th>Job</th></tr>
+  <tr><td><strong>Dial (tap)</strong></td><td>Selects turns on the loading / matching toroid. Main HF tuning. On VHF/UHF, park at the VHF position.</td></tr>
+  <tr><td><strong>Whip length</strong></td><td>Sets physical resonance. Fine-tunes HF after the dial; primary adjuster on VHF/UHF.</td></tr>
+</table>
+
+<h2>Realistic expectations</h2>
+<ul>
+  <li>On upper HF (e.g. 20 / 15 / 10 m) you can often get near 1:1 with careful adjustment.</li>
+  <li>On 40 / 80 m, expect compromise (often nearer 2:1 in original reports). Efficiency is low — QSOs still happen when conditions / persistence cooperate.</li>
+  <li>This is a <strong>portable compromise antenna</strong>, not a substitute for a full-size dipole or vertical with a real radial system.</li>
+</ul>
+
+<h2>Optional improvements</h2>
+<ul>
+  <li>Add a ¼-wave counterpoise for the band in use (clip to radio ground lug / chassis).</li>
+  <li>Short length of coax between radio and whip if the PL-259 sticks out awkwardly.</li>
+  <li>Extra tip wire (inverted-L style) can help lower HF sometimes — retune dial afterward; may fall outside range on some bands.</li>
+</ul>
+
+<h2>Band cheat sheet (fill in your unit)</h2>
+<table>
+  <tr>
+    <th>Band</th>
+    <th>Dial / tap</th>
+    <th>Whip</th>
+    <th>SWR</th>
+    <th>Notes</th>
+  </tr>
+  <tr><td>80 m</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>40 m</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>30 m</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>20 m</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>17 m</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>15 m</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>12 / 10 m</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>6 m</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>2 m</td><td>VHF mark</td><td></td><td></td><td></td></tr>
+  <tr><td>70 cm</td><td>VHF mark</td><td></td><td></td><td></td></tr>
+</table>
+
+<h2>Troubleshooting</h2>
+<table>
+  <tr><th>Symptom</th><th>Try</th></tr>
+  <tr><td>No receive peak while turning dial</td><td>Fully extend whip; wrong band; poor connection; try outdoors / clear of metal.</td></tr>
+  <tr><td>SWR won’t come down on HF</td><td>Re-peak on receive first; move dial one click either way; small whip change; add ¼-wave counterpoise; drop power.</td></tr>
+  <tr><td>SWR jumps when you touch the radio</td><td>Normal for a whip with no/poor counterpoise — add a radial or change how the radio is grounded/held.</td></tr>
+  <tr><td>VHF SWR bad</td><td>Dial on VHF mark; set whip nearer true ¼-wave; recheck with radio on a table vs hand-held.</td></tr>
+  <tr><td>Radio cuts back / heats</td><td>Power too high or SWR too high — stop, retune, reduce power.</td></tr>
+</table>
+
+<div class="footer">
+  Sources (paraphrased for training; not a reprint): Robert Victor VA2ERY Miracle Whip concept (QST July 2001) as summarized in
+  Amateur Radio (Australia) Technical Abstracts, April 2002 (Gil Sones VK3AUI);
+  Moonraker Whizz Whip sheet (mkr-13-425) for connector, length, power, and VHF-dot procedure.
+  Independent educational material for Halifax &amp; Dartmouth Amateur Radio Clubs.
+  Not affiliated with Miracle Antenna / Moonraker.
+</div>
+
+</body>
+</html>

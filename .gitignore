@@ -12,6 +12,7 @@ desktop.ini
 codeplugs/*-personal.*
 
 _pdf-extract/
+antennas/_extract/
 *.mc4
 
 # OEM / third-party manuals — keep local for drafting; do not publish in repo
