@@ -48,4 +48,5 @@ Document titles should identify both clubs, for example:
 - Keep each radio’s codeplug notes and regional repeater info with that radio’s folder.
 - Do not commit personal DMR IDs, passwords, or member PII.
 - Frame materials around **learning and operating**, not equipment logistics.
-- Starter manuals (v0.1) are scaffolds to expand in class; DM-32UV is the deepest example so far.
+- **Depth:** Analog FM = brief (unless a model has quirks). Digital modes and special features (APRS, C4FM, DMR, HF SDR tools, ATAS, etc.) = deep educational coverage.
+- **Deep examples so far:** `radios/DM-32UV/` (DMR), `radios/Kenwood-TH-D72A/` (APRS). Other model folders may still be v0.1 scaffolds.
