@@ -10,3 +10,10 @@ desktop.ini
 *password*
 *secret*
 codeplugs/*-personal.*
+
+_pdf-extract/
+*.mc4
+
+# OEM / third-party manuals — keep local for drafting; do not publish in repo
+radios/**/*.pdf
+antennas/**/*.pdf

@@ -10,7 +10,7 @@ Educational operating manuals and training topics for amateur radio members.
 |------|---------|
 | `radios/` | Radio-specific how-to manuals (one subfolder per model) |
 | `antennas/` | Antenna / accessory training manuals |
-| `topics/` | Non-radio training (licensing, nets, EmComm, digital modes, etc.) |
+| `topics/` | Cross-radio / non-radio training (PC connectivity, licensing, nets, EmComm, etc.) |
 
 ## Radios
 
@@ -49,4 +49,4 @@ Document titles should identify both clubs, for example:
 - Do not commit personal DMR IDs, passwords, or member PII.
 - Frame materials around **learning and operating**, not equipment logistics.
 - **Depth:** Analog FM = brief (unless a model has quirks). Digital modes and special features (APRS, C4FM, DMR, HF SDR tools, ATAS, etc.) = deep educational coverage.
-- **Deep examples so far:** `radios/DM-32UV/` (DMR), `radios/Kenwood-TH-D72A/` (APRS). Other model folders may still be v0.1 scaffolds.
+- **Deep examples so far:** `radios/DM-32UV/` (DMR), `radios/Kenwood-TH-D72A/` (APRS + packet/Winlink/PC). Cross-radio USB/serial: `topics/pc-radio-connectivity/`. Other model folders may still be v0.1 scaffolds.

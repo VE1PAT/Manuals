@@ -2,7 +2,7 @@
 # Kenwood TH-D72A Operating Manual
 
 **Kenwood TH-D72A — training handbook**  
-FM voice briefly; **settings, APRS, GPS, TNC, and special features in depth**
+FM voice briefly; **settings, APRS, GPS, packet/Winlink, PC link, and special features in depth**
 
 | | |
 |---|---|
@@ -11,9 +11,10 @@ FM voice briefly; **settings, APRS, GPS, TNC, and special features in depth**
 | **Assumes** | Valid Canadian amateur licence and callsign |
 | **Equipment** | Kenwood TH-D72A (144/440 MHz FM HT + GPS + AX.25 TNC) |
 | **Also known as** | Often listed simply as “TH-72A” |
-| **Version** | 0.3 |
+| **Version** | 0.4 |
+| **Companion** | [`topics/pc-radio-connectivity/`](../../topics/pc-radio-connectivity/) — USB/serial ideas shared by many radios |
 
-**Scope:** Club **education**. Analog FM is covered for completeness but kept light. The educational weight is on **radio settings** (as exposed in MCP-4A) and **APRS / GPS / special features**.
+**Scope:** Club **education** that **enhances** (does not replace) the Kenwood manuals. Analog FM is brief. Weight is on settings clarity, APRS/GPS, and **using the built-in TNC with a computer** (packet / Winlink).
 
 ### How this manual is weighted
 
@@ -23,8 +24,9 @@ FM voice briefly; **settings, APRS, GPS, TNC, and special features in depth**
 | Memory / VFO / Call / Weather channel fields | Brief — what each field *means* |
 | Menu — Radio | Moderate — everyday comfort settings |
 | **Menu — GPS / APRS / related tables** | **Deep** |
+| **PC USB link, Packet mode, Winlink** | **Deep** (practical paths; not an OEM command dump) |
 | Digipeater, EchoLink, Sky Command, MCP-4A | Deep enough for classroom use |
-| Official menu encyclopaedia | Kenwood instruction manual remains authoritative for exact menu numbers |
+| Official menu encyclopaedia / full TNC command table | Kenwood CD-ROM English manual |
 
 ### Publication and privacy
 
@@ -44,11 +46,14 @@ Sources are listed in the **Annex**.
 | Get on a local FM repeater quickly | Chapter 4 |
 | Learn memory / Call / Weather / VFO fields | Chapters 5–9 |
 | Everyday radio menus (display, power, lock…) | Chapter 10 |
-| GPS + logging + target points | Chapters 11–12 |
+| GPS + logging + target / mark waypoints | Chapters 11–12 |
 | **APRS settings end-to-end** | **Chapters 13–15** |
-| Messages, status, digipeat, SmartBeaconing | Chapters 14–15 |
+| Messages, Voice Alert, IGate picture, SmartBeaconing | Chapters 14–15 |
 | EchoLink / DTMF / Band Mask / Sky Command | Chapters 16–18 |
-| Fix “I’m not beaconing” | Chapter 19 |
+| **USB to Windows / Linux / Raspberry Pi** | **Chapter 19** |
+| **Packet TNC + Winlink** | **Chapters 20–21** |
+| Reset / firmware hygiene | Chapter 22 |
+| Fix “I’m not beaconing” / Winlink fails | Chapter 23 |
 
 **Critical distinction:** APRS on the TH-D72A is classic **AX.25 packet over FM** (typically **144.390 MHz** in North America). It is **not** DMR SMS APRS.
 
@@ -338,15 +343,26 @@ GPS feeds APRS positions, the **POS** display, logging, and optional NMEA output
 | **Wrap When Full** | If On, oldest points are overwritten when the log fills; if Off, logging stops when full. |
 | **Select Target Point** / **Target Point** | Which stored target is active for bearing/distance displays — see Chapter 12. |
 
+### Displays newcomers should know
+
+| Idea | Why it matters |
+|---|---|
+| **Satellite information** | Shows how many satellites the internal GPS is using. No bars / poor geometry → poor or no fix. |
+| **North Up vs Heading Up** | Map-style orientation: north fixed at top, or your travel direction at top. Pick whichever is less confusing while walking. |
+| **GPS Only mode** | Radio focuses on GPS/logging with reduced “full radio” behaviour — useful for track logging to save confusion/battery; not your everyday APRS voice+data setup. |
+| **Battery with GPS on** | Internal GPS draws power. Expect shorter runtime with GPS + APRS + backlight than with plain FM. GPS battery-saver helps; it can also delay fixes. |
+
 ### Field habit
 
 - Outdoors for a fix before blaming APRS.  
 - Logging ≠ beaconing: you can log a hike with BCON off.  
-- Export logs with MCP-4A (e.g. KML) after exercises.
+- Export logs with MCP-4A (KML / GPX) after exercises.
 
 ---
 
-## Chapter 12 — Target Point
+## Chapter 12 — Target Point and Mark Waypoint
+
+### Target Point
 
 Up to several named lat/lon targets (plus grid). The radio can show direction/distance toward the selected target.
 
@@ -358,6 +374,18 @@ Up to several named lat/lon targets (plus grid). The radio can show direction/di
 | **GS** | Grid square derived/associated display |
 
 **Classroom use:** set one target to the meeting site so students see GPS navigation features without APRS TX.
+
+### Mark Waypoint (“drop a pin”)
+
+A **Mark Waypoint** stores *where you are right now* (or a marked position) into a waypoint list — different from a pre-planned Target Point.
+
+| Task | Idea |
+|---|---|
+| Mark this spot | Use the mark-waypoint key/hold sequence in the Kenwood GPS chapter (often a long-press style **MARK** action — confirm on your firmware) |
+| Navigate back | Copy a mark into a **Target Point**, then use bearing/distance |
+| Export | MCP-4A can read mark waypoints with logs |
+
+Think: **Mark** = breadcrumb you just created; **Target** = place you intentionally navigate toward.
 
 ---
 
@@ -374,7 +402,7 @@ Put **144.390 MHz FM** on the **Data Band**.
 | Setting | What it does / how to use it |
 |---|---|
 | **Operating Mode** | **APRS** vs packet-oriented modes. Everyday position beaconing wants **APRS** (and the front-panel TNC in APRS, not Packet). |
-| **My Callsign** | **Required.** Without it, the radio will not TX APRS. Include SSID (handhelds often use `-7`). |
+| **My Callsign** | **Required.** Without it, the radio will not TX APRS. Include an **SSID** (see below). |
 | **APRS Lock** | Limits accidental changes to APRS-critical settings while operating. Useful once configured. |
 | **Speed / Altitude** | Include speed and altitude in position packets when On. |
 | **Position Ambiguity** | Coarsens reported position for privacy. Off = full precision available from GPS. |
@@ -387,6 +415,19 @@ Put **144.390 MHz FM** on the **Data Band**.
 | **Rx Beep / Tx Beep** | Audible cues for received/transmitted APRS traffic. Rx All is educational; Tx Off is less annoying in a room. |
 | **Special Call** | Callsign that gets elevated alerting when it messages/appears — optional Elmer/family watch list. |
 
+### SSID (Secondary Station Identifier)
+
+APRS callsigns look like `VE1ABC-7`. The number after the dash is the **SSID** — it distinguishes *this radio* from your other stations (home digi, car, Winlink, etc.).
+
+| Common habit | Typical meaning (convention, not law) |
+|---|---|
+| `-7` | Handheld / portable |
+| `-9` | Mobile |
+| `-10` | Often Winlink / gateway style (depends on service) |
+| no SSID / `-0` | Often a primary home station |
+
+Pick one SSID per radio role and **keep it stable** so aprs.fi history stays readable. Your Winlink account / packet `MYCALL` may use a different SSID than APRS — that is normal.
+
 ### First beacon checklist
 
 1. **My Callsign** set (with SSID).  
@@ -395,7 +436,8 @@ Put **144.390 MHz FM** on the **Data Band**.
 4. GPS fix (or My Position — Chapter 15).  
 5. Method + Initial Interval chosen.  
 6. **[BCON]** On (indicator visible).  
-7. Verify locally and/or on [aprs.fi](https://aprs.fi).
+7. Optional **Quick Beacon:** **[F] + [BCON]** forces a beacon when Auto/SmartBeaconing is selected (confirm on your firmware).  
+8. Verify locally and/or on [aprs.fi](https://aprs.fi).
 
 ### APRS (Packet) — filters and path
 
@@ -430,8 +472,8 @@ These control **what you accept** and **how your packets are addressed** through
 | **Data Speed** | **1200** bps for normal NA FM APRS. **9600** is a different use case; also breaks Voice Alert tone demodulation. |
 | **DCD Sense** | When the TNC is allowed to TX: wait for data-band clear (**D or RxD Band**), wait for both bands, or **Ignore DCD** (can collide — avoid unless you know why). |
 | **Tx Delay** | Milliseconds of preamble before packet data — helps slow squelch/digi rise times. 200 ms is a common starting point; increase if digis chop your first bytes. |
-| **Voice Alert** | Uses CTCSS on the APRS channel as a “someone nearby is on Voice Alert” proximity idea, with voice QSO potential. Off unless the local group uses it. |
-| **CTCSS Frequency** | Tone used for Voice Alert (commonly discussed as 100.0 Hz in Kenwood APRS materials). |
+| **Voice Alert** | See “Voice Alert in plain language” below. |
+| **CTCSS Frequency** | Tone used for Voice Alert (Kenwood materials commonly use **100.0 Hz**). |
 | **Message Group Code** | Group names your radio will accept as group-addressed messages (defaults often include ALL, QST, CQ, KWD). |
 | **Bulletin Group** | Bulletin group filter/name — optional. |
 
@@ -451,7 +493,67 @@ These control **what you accept** and **how your packets are addressed** through
 
 ## Chapter 14 — Menu — APRS (Message, Digipeat, Display, SmartBeaconing, NAVITRA)
 
-### APRS (Message)
+### Voice Alert in plain language
+
+**Voice Alert** is an APRS-era trick: stations leave a CTCSS tone on the APRS *data* frequency so that if another Voice Alert station is **nearby** (simplex range), your radio can tip you that a human is close enough for a voice chat — without staring at the APRS list while driving.
+
+| Fact | Detail |
+|---|---|
+| Needs | Voice Alert enabled; matching CTCSS (often 100.0 Hz); **1200 bps** data speed |
+| Broken by | **9600 bps** packet speed (tone demodulation suffers) |
+| Tone key | When APRS + Voice Alert are configured, Voice Alert appears in the **[TONE]** cycle with Tone/CTCSS/DCS |
+| Club default | **Off** unless your local group actually uses it |
+
+### Seeing other stations (list literacy)
+
+With TNC in **APRS** on 144.390:
+
+1. Stations appear as packets are decoded.  
+2. Open a station for detail pages (position, course, path/digis, status, QSY frequency if present).  
+3. **Filters** (Weather / Digipeater / Mobile / Object / …) shrink what you keep — useful when the list is noisy.  
+4. **Position Limit** keeps only nearby stations.  
+5. **Sort** (where offered) helps find a callsign faster.  
+6. GPS quality cues on a station (Kenwood uses ideas like tracked vs last-known) tell you whether their position is fresh.
+
+You do **not** need to understand every icon on day one — learn “open station → read distance/bearing → read status/QSY.”
+
+### APRS messages (send / receive)
+
+APRS messages are short RF texts to a callsign-SSID (or group names you accept).
+
+| Step | What to do |
+|---|---|
+| Receive | Radio can interrupt/display a new message; store it in the message list (capacity is limited — on the order of 100). |
+| Read / reply | Open the message list → Reply / Edit / New. |
+| Send new | Address `CALL-SSID`, type text (or pick a **User Phrase**), transmit when the channel is clear. |
+| Groups | **Message Group Code** list (e.g. ALL, QST, CQ, KWD) — messages to those names can be accepted. |
+| Bulletins | Optional bulletin group feature — specialty traffic; not day-one. |
+| Auto Reply | Keep **Off** unless you have a reason — unattended replies create RF noise. |
+
+Etiquette: messaging shares 144.390 with everyone’s beacons. Keep it short.
+
+### How you get onto aprs.fi (IGate picture)
+
+```
+Your HT (RF on 144.390)
+    → heard by a digipeater and/or an IGate
+        → IGate injects into APRS-IS (internet)
+            → sites like aprs.fi show you
+```
+
+| You observe | Likely meaning |
+|---|---|
+| Hear others on RF, never see yourself online | No **IGate** heard you (or path too odd / power too low) |
+| See yourself online quickly | A local IGate copied you — success |
+| See yourself only after a long path | Worked, but be kind: shorten path next time |
+
+**IGate** = a station that bridges RF APRS ↔ internet. You do not need to run one to *use* APRS.
+
+### APRS email (optional)
+
+Some networks support sending short email-like traffic via APRS (Kenwood in-depth docs describe email send procedures). Treat as **advanced / occasional**: easy to get addressing wrong, and it still burns RF capacity. Prefer Winlink (Chapters 20–21) for real radio email practice.
+
+### APRS (Message) settings
 
 | Setting | What it does / how to use it |
 |---|---|
@@ -461,7 +563,7 @@ These control **what you accept** and **how your packets are addressed** through
 | **Status Text Channel in Use** | Which of the Status Text slots is active. |
 | **Status Text** | Points at the Status Text table (Chapter 15). **QSY needs a real status configuration** — empty/disabled status is a common “why won’t QSY work?” failure. |
 | **User Phrases** | Quick canned text for messaging (Chapter 15). |
-| **Reply** / **Delay Time** / **Text** / **Reply To** | Automatic reply to incoming messages (delay, text, which sender pattern). Keep **Off** unless you have a deliberate unattended reason — easy to create RF noise loops. |
+| **Reply** / **Delay Time** / **Text** / **Reply To** | Automatic reply to incoming messages. Keep **Off** unless deliberate. |
 
 ### APRS (Digipeat) — advanced
 
@@ -506,9 +608,18 @@ Used only when **Method = SmartBeaconing**. When SmartBeaconing is selected, **I
 
 **Practice:** demo SmartBeaconing on a drive; return Method to Auto/Manual afterward if the radio will sit on a desk.
 
-### APRS (NAVITRA)
+### What is NAVITRA?
 
-Japanese NAVITRA group messaging features (**Group Mode**, **Group Code**, message channel). Not used in normal North American club APRS. Leave disabled / unused unless teaching a specialty topic.
+**NAVITRA** is a **Japanese** position/messaging system that also uses packet-like beacons. Kenwood included NAVITRA menus so the same radio hardware can serve that market.
+
+| For HARC / DARC | Guidance |
+|---|---|
+| Do we use it in Nova Scotia? | **No** — local practice is **APRS** on **144.390** |
+| Why are the menus there? | Shared firmware with TH-D72E / global product line |
+| What should students do? | Leave NAVITRA settings alone; ignore NAVITRA Message slots |
+| If the radio says NAVITRA | You pressed **[TNC]** into the wrong personality — get back to **APRS** (or Packet when doing Winlink) |
+
+NAVITRA is **not** “APRS with another name,” and it is **not** required for Canadian operation.
 
 ---
 
@@ -579,19 +690,207 @@ Enables or masks which band segments appear on A (upper) and B (lower):
 
 ---
 
-## Chapter 18 — Menu — Sky Command II
+## Chapter 18 — Sky Command II and wireless remote (brief)
+
+### Sky Command II
 
 | Setting | What it does / how to use it |
 |---|---|
-| **Commander Callsign** | Callsign identity for the handheld commander role |
-| **Transporter Callsign** | Callsign of the HF transporter / base side |
-| **Tone Frequency** | CTCSS used on the Sky Command link |
+| **Commander Callsign** | Handheld commander identity |
+| **Transporter Callsign** | HF transporter / base identity |
+| **Tone Frequency** | CTCSS on the Sky Command link |
 
-Sky Command II remotes a compatible Kenwood HF station via the handheld. **Skip until HF mentoring is available.** Leave callsigns at safe placeholders on shared radios so nobody accidentally keys a link.
+Remotes a compatible Kenwood HF setup. **Skip until HF mentoring is available.**
+
+### Wireless operation (TH-D72A)
+
+The Americas model can act as a **wireless remote** for certain Kenwood mobiles (OEM “Wireless Operation” chapter). Specialty topic — not required for APRS or Winlink class. Leave off unless an Elmer is teaching that specific pair of radios.
 
 ---
 
-## Chapter 19 — Troubleshooting
+## Chapter 19 — Connecting the TH-D72A to a computer
+
+Cross-radio overview: [`topics/pc-radio-connectivity/`](../../topics/pc-radio-connectivity/). This chapter is the **TH-D72A** path.
+
+### What the USB cable is for
+
+| Use | TNC / mode | Typical software |
+|---|---|---|
+| Program memories / APRS menus | Radio on; MCP-4A talking “radio control” | **MCP-4A** (Windows) |
+| Export GPS logs / waypoints | MCP-4A | MCP-4A → KML/GPX |
+| **Packet / Winlink / keyboard TNC** | **[TNC] → PACKET** | Winlink Express, Pat, terminal, AX.25 stack |
+| Live NMEA to a map app | GPS/APRS PC output menus On | Mapping app that reads NMEA |
+
+Same mini-USB cable; **different software jobs**. Do not expect MCP-4A and a packet program to own the COM port at the same time.
+
+### Driver (Virtual COM Port)
+
+Kenwood documents a **virtual COM port** driver so Windows sees the radio as `COMx`. On many systems this is a Silicon Labs **CP210x**-class USB-serial device (Kenwood’s package name may say “Virtual COM Port”).
+
+| Platform | What you do |
+|---|---|
+| **Windows** | Install Kenwood’s VCP / CP210x package if Device Manager shows an unknown USB device. Note the **COM port number**. |
+| **Linux** | Often appears as `/dev/ttyUSB0` (or similar) via the `cp210x` kernel driver — no Kenwood GUI required. Check `dmesg` after plug-in. Add your user to the `dialout` group (or equivalent) so you can open the port. |
+| **Raspberry Pi** | Same as Linux. Prefer a known-good powered USB path; flaky hubs cause mystery disconnects. |
+
+**Baud note:** In **PACKET** mode the PC↔radio USB link is commonly **9600 bps** (serial line rate). That is *not* the same number as on-air **1200 / 9600** HBAUD — see Chapter 20.
+
+### MCP-4A newcomer path (Windows)
+
+1. Install VCP driver if needed.  
+2. Install **MCP-4A**.  
+3. Power radio → plug USB → select COM port in MCP-4A.  
+4. **Read** from radio → **Save** a dated backup → edit → **Write** only when intentional.  
+5. GPS log: read log → export **KML** / **GPX** for Google Earth / GIS viewers.
+
+MCP-4A is the comfortable tool for memories and APRS tables. Packet/Winlink use other programs (Chapters 20–21).
+
+### Linux / Pi without MCP-4A
+
+You can still:
+
+- Use the serial device for **packet / Pat / kissattach** (Chapter 21)  
+- Use community tools that speak Kenwood protocols (advanced)  
+- Keep a Windows VM or club laptop for MCP-4A backups if you do not want to fight wine/VMs on day one  
+
+---
+
+## Chapter 20 — Packet mode and the built-in TNC
+
+### APRS mode vs Packet mode (do not confuse them)
+
+| Front-panel TNC state | Job |
+|---|---|
+| **APRS** | On-radio APRS beacons, list, messages |
+| **PACKET** | Built-in TNC for a **computer** (or keyboard terminal) — BBSs, nodes, **Winlink**, experiments |
+| **Off** | Plain FM |
+
+For Winlink / classic packet: **[TNC]** until the display shows **PACKET** (often with **12** or **96** to hint 1200 vs 9600 on-air).
+
+### What “TNC command list” means
+
+Kenwood’s CD-ROM manual includes a long **TNC COMMANDS LIST** (`MYCALL`, `KISS`, `HBAUD`, `CONNECT`, …). That is a **reference dump** for the `cmd:` style TNC — useful when you open a serial terminal to the radio.
+
+This club book does **not** reprint that encyclopedia. You need:
+
+| Command / idea | Why |
+|---|---|
+| **MYCALL** | Your callsign-SSID for packet connects (also tied to Menu My Callsign behaviour) |
+| **HBAUD 1200** or **9600** | On-air modem speed — must match the gateway |
+| **KISS ON** + **RESTART** | Enter **KISS** framing so Linux AX.25 / many apps can drive the TNC |
+| **CONNECT** / `c CALL-SSID` | Manual connect from a terminal (learning / debugging) |
+| Software flow control | Often required for reliable KISS (tools such as `tmd710_tncsetup -s` on Linux) |
+
+Everything else on the OEM list is “look up when an Elmer says so.”
+
+**Quirk:** Many Packet-mode TNC settings **reset when you power-cycle** (Kenwood notes limited backup). Expect to re-apply KISS / setup scripts after power-off. My Callsign / clock are the usual survivors.
+
+### On-air 1200 vs 9600
+
+| On-air speed | When |
+|---|---|
+| **1200 baud** (`packet12`) | Most VHF packet / many Winlink gateways; default APRS world |
+| **9600 baud** (`packet96`) | Only if the *gateway* and your path support it; needs strong signal |
+
+Match the published RMS / node speed. Wrong speed = you TX into silence.
+
+### Data band / frequency
+
+1. Set **Packet Band** / **Data Band** to the band you will use.  
+2. Tune that band to the **packet or Winlink gateway frequency** (not 144.390 unless that gateway really is there).  
+3. Store a memory (e.g. label `WinlinkV` / `PacketU`) once you know the local channel.  
+
+Ask club Elmers for current Nova Scotia / Maritime gateway frequencies — they change; this manual does not hard-code a living list.
+
+### Manual terminal smoke test (any OS)
+
+1. USB connected; VCP/tty visible.  
+2. Radio → **PACKET**, correct frequency, 1200 unless told otherwise.  
+3. Open a serial terminal at **9600** 8N1 on that port (PuTTY, `picocom`, `minicom`, …).  
+4. Wake to `cmd:` prompt (may need Enter).  
+5. Check/set `MYCALL`, try a `CONNECT` to a known node if one is reachable.  
+
+If this fails, fix cables/drivers/mode before blaming Winlink software.
+
+---
+
+## Chapter 21 — Winlink with the TH-D72A
+
+**Winlink** is radio email (and forms) via RMS gateways. The TH-D72A’s built-in TNC can do **packet Winlink** when a gateway is in range.
+
+### What you need
+
+1. Winlink account / callsign authorization (winlink.org process).  
+2. TH-D72A + charged battery + decent antenna.  
+3. USB cable + working COM/`tty` (Chapter 19).  
+4. Known **RMS gateway** frequency, SSID (often `-10`), and baud.  
+5. Software below.
+
+### Windows — Winlink Express (typical club path)
+
+1. Install VCP driver; note COM port.  
+2. Install **Winlink Express**.  
+3. Radio: **PACKET**, data band on gateway frequency, **1200 or 9600** to match the RMS.  
+4. In Express, configure a **Packet Winlink** session using the Kenwood / KISS-style TNC options appropriate to the D72 (select the COM port; follow current Express UI labels — they evolve).  
+5. Start session → connect to `GATEWAY-10` (example form) → send a test message to yourself.
+
+Club tip: practice once at a meeting where an Elmer can hear whether you are keying and whether the gateway answers.
+
+### Linux / Raspberry Pi — Pat + AX.25 (typical)
+
+Community-proven pattern for the D72:
+
+1. Radio USB → `/dev/ttyUSBx`.  
+2. Radio in **PACKET** / **packet12** (for 1200-baud gateways).  
+3. Use a Kenwood KISS setup helper (commonly **`tmd710_tncsetup`**, shared with TM-D710-class TNCs): set band, **HBAUD 1200**, enable **software flow control**.  
+4. `kissattach` / AX.25 ports (`/etc/ax25/axports`) — note the usual gotcha: **serial line speed 9600** vs **on-air HBAUD 1200** are different settings.  
+5. Run **Pat** with an `ax25://…/CALL-10` connect alias to your RMS.
+
+Pi note: same stack as Linux; keep power solid. For class demos, a laptop running Express may be less fragile than a first-time Pat install.
+
+### Winlink vs APRS on this radio
+
+| | APRS | Winlink packet |
+|---|---|---|
+| TNC key | **APRS** | **PACKET** |
+| Typical frequency | 144.390 (NA) | Published RMS channel |
+| Goal | Positions / short messages | Email / forms via RMS |
+| PC required? | No for basic use | Yes for Express / Pat |
+
+You generally **cannot** usefully run full APRS beaconing personality and a Winlink KISS session as one brain at the same time — pick a job, set the TNC mode, finish, then switch back.
+
+### Etiquette
+
+- Leave the channel once your traffic finishes.  
+- Don’t camp a gateway for practice during an emergency net.  
+- Identify; use your own callsign-SSID.
+
+---
+
+## Chapter 22 — Reset and firmware (hygiene)
+
+### Reset
+
+Kenwood offers reset styles (key combo vs menu). Know before you use them:
+
+| Risk | What you can lose |
+|---|---|
+| Partial / menu resets | Selected settings |
+| Full transceiver reset | Memories, APRS config, almost everything |
+
+**Training habit:** MCP-4A backup **before** any reset. After reset, reload the club or student file.
+
+### Firmware
+
+1. Read the version on the radio and/or in MCP-4A (**Transceiver Information**).  
+2. Download firmware only from **Kenwood’s official** update path.  
+3. Follow their steps exactly (battery charged, cable solid, do not interrupt).  
+
+Club radios: note the version on a label or inventory sheet after updates.
+
+---
+
+## Chapter 23 — Troubleshooting
 
 | Symptom | Likely cause | What to try |
 |---|---|---|
@@ -599,28 +898,31 @@ Sky Command II remotes a compatible Kenwood HF station via the handheld. **Skip 
 | No APRS TX | TNC Off or Packet | **[TNC]** → **APRS** |
 | No APRS TX | BCON not armed | **[BCON]** until indicator shows |
 | No APRS TX / odd posits | No GPS fix | Go outside; or set My Position |
-| Hear nothing on APRS | Wrong frequency / data band | **144.390** on Data Band; match Packet Band |
-| Collisions / chopped packets | DCD / Tx Delay | Prefer DCD sense on data band; increase Tx Delay |
-| Hear others, not on aprs.fi | No IGate heard you | Move; shorten/fix path; ask locals |
-| Beaconing too often | Interval / SmartBeaconing | Lengthen rates; enable Decay; check Low Speed jitter |
+| Hear nothing on APRS | Wrong frequency / data band | **144.390** on Data Band |
+| Hear others, not on aprs.fi | No IGate heard you | Move; check path; ask locals |
+| Voice Alert “broken” | Data speed 9600 | Use **1200** for Voice Alert |
 | QSY info missing | Status empty / Tx Rate Off | Configure Status Text + QSY in Status |
-| Voice on 144.390 | TX on data band | Move voice to the other band |
-| Radio “won’t TX” | Inhibit / lock / TOT / password | Check Menu — Radio TX Inhibit, Lock, TOT, Password |
-| Radio dies in class | APO / Save / lamp | Check Automatic Power-off |
-| Digi mystery traffic | Digipeat left On | Turn Digipeat Off after exercises |
-| Units look “American” | Display units | Menu — APRS Display unit settings |
+| PC does not see radio | Driver / cable / port busy | VCP install; close MCP-4A; try other USB port |
+| Packet terminal dead | Not in PACKET mode / wrong baud | PACKET + 9600 8N1 on USB |
+| Winlink no connect | Wrong freq/baud/SSID / not KISS | Match RMS; KISS setup; strong signal |
+| Winlink flaky | Flow control / power / antenna | Enable software flow control; better antenna |
+| KISS settings vanished | Power cycle cleared TNC RAM | Re-run setup script / re-enter KISS |
+| Digi mystery traffic | Digipeat left On | Turn Digipeat Off |
+| Radio dies in class | APO | Lengthen/disable APO while training |
 
 ---
 
-## Chapter 20 — Suggested training path
+## Chapter 24 — Suggested training path
 
 1. **Analog:** one repeater memory + simplex (Chapters 4–5).  
-2. **Tour MCP-4A headings** so students know where settings live (Chapter 3).  
-3. **APRS receive only:** 144.390, TNC APRS, watch the list.  
-4. **First beacon:** Chapter 13 checklist → aprs.fi.  
-5. **Manners:** interval, Decay, path, Proportional Pathing.  
-6. **Status / messages / QSY** (Chapters 14–15).  
-7. **Optional:** SmartBeaconing drive, GPS log export, digipeater drill, EchoLink DTMF demo.  
+2. **Tour MCP-4A headings** (Chapter 3) + USB driver on one PC (Chapter 19).  
+3. **APRS receive only** → station list literacy (Chapter 14).  
+4. **First beacon** → aprs.fi / IGate picture (Chapters 13–14).  
+5. **Manners:** interval, Decay, path.  
+6. **Status / messages / QSY** (optional Voice Alert if locals use it).  
+7. **Packet terminal smoke test** (Chapter 20).  
+8. **Winlink** to a local RMS with Express or Pat (Chapter 21).  
+9. **Optional:** SmartBeaconing drive, GPS log export, digipeater drill.  
 
 ---
 
@@ -629,10 +931,20 @@ Sky Command II remotes a compatible Kenwood HF station via the handheld. **Skip 
 ### APRS bring-up (NA)
 
 ```
-My Callsign  →  144.390 on Data Band
+My Callsign-SSID  →  144.390 on Data Band
 TNC → APRS  →  GPS fix (or My Position)
 Method + Initial Interval  →  BCON ON
+Optional: F + BCON quick beacon
 Verify aprs.fi / local decode
+```
+
+### Packet / Winlink bring-up
+
+```
+USB → COM/tty working
+TNC → PACKET (packet12 or packet96 to match RMS)
+Data band on gateway frequency
+Windows: Winlink Express  |  Linux/Pi: KISS setup + Pat
 ```
 
 ### Keys
@@ -640,7 +952,7 @@ Verify aprs.fi / local decode
 | Key | Role |
 |---|---|
 | **TNC** | Off / APRS / Packet |
-| **BCON** | Arm beaconing |
+| **BCON** | Arm beaconing / with F: quick beacon |
 | **POS** | Position display |
 | **PTT** | Voice — keep off the data band |
 
@@ -656,7 +968,8 @@ Memory → Program Scan → Call → Weather → VFO → Menu Radio → Sky Comm
 |---|---|---|
 | 0.1 | 2026-07-31 | Scaffold |
 | 0.2 | 2026-07-31 | Light analog, deep APRS narrative |
-| 0.3 | 2026-07-31 | Restructured around MCP-4A export headings; settings explained without personal values |
+| 0.3 | 2026-07-31 | MCP-4A settings headings |
+| 0.4 | 2026-07-31 | Voice Alert/list/messages/IGate; GPS marks; PC USB; Packet/Winlink; NAVITRA explained; reset/firmware |
 
 Menu numbers in the field may be confirmed against the Kenwood instruction manual for your firmware; this book prefers **setting names** (as in MCP-4A) so wording stays stable across docs.
 
@@ -664,14 +977,15 @@ Menu numbers in the field may be confirmed against the Kenwood instruction manua
 
 ## Annex — Sources and acknowledgements
 
-Original HARC/DARC training narrative. Not a copy of Nifty or third-party commercial guides.
+Original HARC/DARC training narrative. Enhances, does not replace, Kenwood OEM manuals.
 
 | Source | Use |
 |---|---|
-| Kenwood TH-D72A Instruction Manual | Authoritative menus and specifications |
-| Kenwood TH-D72A/E APRS / In-Depth materials | Decay, Proportional Pathing, SmartBeaconing, QSY, Voice Alert concepts |
-| Kenwood MCP-4A (export section headings) | Outline of settings chapters in this book |
+| Kenwood TH-D72A Instruction Manual (CD-ROM English) | Menus, PACKET mode, TNC command reference |
+| Kenwood TH-D72A/E APRS In-Depth Manual | Decay, Proportional Pathing, SmartBeaconing, QSY, Voice Alert, IGate, MCP-4A, firmware |
+| Kenwood MCP-4A + VCP driver materials | PC programming / GPS export |
+| Community Pat + TH-D72A AX.25 write-ups | Linux/Pi KISS / `tmd710_tncsetup` patterns (paraphrased) |
 | SSIARS practical TH-D72A notes | BCON/TNC field quirks (paraphrased) |
-| aprs.fi / APRS network practice | Beacon verification |
+| aprs.fi / Winlink org practice | Verification concepts |
 
-*Independent educational material for Halifax & Dartmouth Amateur Radio Clubs. Not affiliated with or endorsed by JVCKENWOOD / Kenwood.*
+*Independent educational material for Halifax & Dartmouth Amateur Radio Clubs. Not affiliated with or endorsed by JVCKENWOOD / Kenwood / Winlink.*
