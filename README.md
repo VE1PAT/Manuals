@@ -1,4 +1,4 @@
-# Halifax & Dartmouth Amateur Radio Clubs — Manuals
+﻿# Halifax & Dartmouth Amateur Radio Clubs — Manuals
 
 Educational operating manuals and training topics for amateur radio members.
 
@@ -9,10 +9,32 @@ Educational operating manuals and training topics for amateur radio members.
 | Path | Purpose |
 |------|---------|
 | `radios/` | Radio-specific how-to manuals (one subfolder per model) |
-| `radios/DM-32UV/` | Baofeng DM-32UV training handbook (first radio) |
+| `antennas/` | Antenna / accessory training manuals |
 | `topics/` | Non-radio training (licensing, nets, EmComm, digital modes, etc.) |
 
-Add a new radio under `radios/<Model>/`. Add topic manuals under `topics/<topic-name>/`.
+## Radios
+
+| Model | Folder |
+|-------|--------|
+| Baofeng DM-32UV | [radios/DM-32UV](radios/DM-32UV/) |
+| Alinco DJ-V57 | [radios/Alinco-DJ-V57](radios/Alinco-DJ-V57/) |
+| Azden PCS-6000H | [radios/Azden-PCS-6000H](radios/Azden-PCS-6000H/) |
+| Baofeng UV-5R Mini | [radios/Baofeng-UV-5R-Mini](radios/Baofeng-UV-5R-Mini/) |
+| Baofeng UV-5RX | [radios/Baofeng-UV-5RX](radios/Baofeng-UV-5RX/) |
+| Kenwood TH-D72A | [radios/Kenwood-TH-D72A](radios/Kenwood-TH-D72A/) |
+| Kenwood TH-G71A | [radios/Kenwood-TH-G71A](radios/Kenwood-TH-G71A/) |
+| Motorola GM300 | [radios/Motorola-GM300](radios/Motorola-GM300/) |
+| Yaesu FT-710 | [radios/Yaesu-FT-710](radios/Yaesu-FT-710/) |
+| Yaesu FT-5DR | [radios/Yaesu-FT-5DR](radios/Yaesu-FT-5DR/) |
+| Yaesu FT-2600M | [radios/Yaesu-FT-2600M](radios/Yaesu-FT-2600M/) |
+| Yaesu FT-7800R | [radios/Yaesu-FT-7800R](radios/Yaesu-FT-7800R/) |
+| Yaesu FTM-150RASP | [radios/Yaesu-FTM-150RASP](radios/Yaesu-FTM-150RASP/) |
+
+## Antennas
+
+| Model | Folder |
+|-------|--------|
+| Yaesu ATAS-120A | [antennas/Yaesu-ATAS-120A](antennas/Yaesu-ATAS-120A/) |
 
 ## Branding
 
@@ -26,3 +48,4 @@ Document titles should identify both clubs, for example:
 - Keep each radio’s codeplug notes and regional repeater info with that radio’s folder.
 - Do not commit personal DMR IDs, passwords, or member PII.
 - Frame materials around **learning and operating**, not equipment logistics.
+- Starter manuals (v0.1) are scaffolds to expand in class; DM-32UV is the deepest example so far.
