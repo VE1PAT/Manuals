@@ -8,17 +8,16 @@ Educational handbook for the **Kenwood TH-D72A** (listed in inventory as TH-72A)
 
 | File | Purpose |
 |------|---------|
-| [`TH-D72A-Operating-Manual.md`](TH-D72A-Operating-Manual.md) | Training handbook **v0.2** — light analog, deep APRS/GPS/TNC |
+| [`TH-D72A-Operating-Manual.md`](TH-D72A-Operating-Manual.md) | Training handbook **v0.3** — MCP-4A settings map + deep APRS/GPS |
 
 ## Depth policy (this radio)
 
 | Area | Coverage |
 |------|----------|
 | Analog FM | Brief — completeness only |
-| APRS, GPS, TNC, beacons, messaging, digi, EchoLink, MCP-4A | Primary teaching content |
+| MCP-4A / menu settings (by export heading) | Primary structure for “what does this setting do?” |
+| APRS, GPS, TNC, beacons, messaging, digi, EchoLink | Deep educational coverage |
 
-## Still to refine
+## Outline source
 
-- Confirm menu numbers against the exact club radio firmware revision  
-- Add a one-page field card (APRS bring-up only) if instructors want a pocket sheet  
-- Optional: classroom MCP-4A screenshot appendix
+Settings chapter order follows the **MCP-4A HTML export headings** (Memory Channel → … → Band Mask). Personal values from any operator export are **not** copied into the manual.

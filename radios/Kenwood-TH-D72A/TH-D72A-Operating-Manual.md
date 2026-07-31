@@ -2,7 +2,7 @@
 # Kenwood TH-D72A Operating Manual
 
 **Kenwood TH-D72A — training handbook**  
-FM voice briefly; **APRS, GPS, TNC, and special features in depth**
+FM voice briefly; **settings, APRS, GPS, TNC, and special features in depth**
 
 | | |
 |---|---|
@@ -11,24 +11,26 @@ FM voice briefly; **APRS, GPS, TNC, and special features in depth**
 | **Assumes** | Valid Canadian amateur licence and callsign |
 | **Equipment** | Kenwood TH-D72A (144/440 MHz FM HT + GPS + AX.25 TNC) |
 | **Also known as** | Often listed simply as “TH-72A” |
-| **Version** | 0.2 |
+| **Version** | 0.3 |
 
-**Scope:** Club **education**. Analog FM is covered for completeness but kept light. The educational weight is on **APRS and related special features** — where most new TH-D72A operators get stuck.
+**Scope:** Club **education**. Analog FM is covered for completeness but kept light. The educational weight is on **radio settings** (as exposed in MCP-4A) and **APRS / GPS / special features**.
 
 ### How this manual is weighted
 
 | Topic | Depth |
 |---|---|
 | Analog FM voice, memories, tones | Brief — enough to get on local repeaters |
-| Dual-band A/B receive | Moderate — needed for APRS + voice |
-| **APRS / GPS / TNC / beacons / messaging** | **Deep** |
-| Digipeater, EchoLink memories, MCP-4A, Sky Command | Deep enough for classroom use |
-| Full menu encyclopaedia | Use the official Kenwood instruction manual |
+| Memory / VFO / Call / Weather channel fields | Brief — what each field *means* |
+| Menu — Radio | Moderate — everyday comfort settings |
+| **Menu — GPS / APRS / related tables** | **Deep** |
+| Digipeater, EchoLink, Sky Command, MCP-4A | Deep enough for classroom use |
+| Official menu encyclopaedia | Kenwood instruction manual remains authoritative for exact menu numbers |
 
 ### Publication and privacy
 
 - No personal author byline. Leave PDF/DOCX Author/Company metadata blank.
-- Do not publish personal codeplugs or member PII in this repo.
+- Do not publish personal codeplugs, callsigns, EchoLink node numbers, or member PII in this repo.
+- Settings **names** in this book follow the MCP-4A HTML export structure. Values here are teaching defaults / NA practice — not a copy of any one operator’s file.
 
 Sources are listed in the **Annex**.
 
@@ -38,14 +40,17 @@ Sources are listed in the **Annex**.
 
 | If you want to… | Go to |
 |---|---|
-| Get on a local FM repeater quickly | Chapter 3 |
-| Understand A/B bands + data band | Chapter 4 |
-| **First working APRS beacon** | **Chapters 5–7** |
-| Messages, QSY, SmartBeaconing | Chapters 8–9 |
-| Digipeater / Packet / EchoLink / MCP-4A | Chapters 10–12 |
-| Fix “I’m not beaconing” | Chapter 13 |
+| Understand how MCP-4A organizes the radio | Chapter 3 |
+| Get on a local FM repeater quickly | Chapter 4 |
+| Learn memory / Call / Weather / VFO fields | Chapters 5–9 |
+| Everyday radio menus (display, power, lock…) | Chapter 10 |
+| GPS + logging + target points | Chapters 11–12 |
+| **APRS settings end-to-end** | **Chapters 13–15** |
+| Messages, status, digipeat, SmartBeaconing | Chapters 14–15 |
+| EchoLink / DTMF / Band Mask / Sky Command | Chapters 16–18 |
+| Fix “I’m not beaconing” | Chapter 19 |
 
-**Critical distinction:** APRS on the TH-D72A is classic **AX.25 packet over FM** (typically **144.390 MHz** in North America). It is **not** DMR SMS APRS (as on some Baofeng DMR HTs).
+**Critical distinction:** APRS on the TH-D72A is classic **AX.25 packet over FM** (typically **144.390 MHz** in North America). It is **not** DMR SMS APRS.
 
 ---
 
@@ -53,38 +58,73 @@ Sources are listed in the **Annex**.
 
 The TH-D72A is a dual-band FM handheld with:
 
-- Normal **VHF/UHF FM voice** (like many dual-band HTs)
+- Normal **VHF/UHF FM voice**
 - Built-in **GPS**
-- Built-in **TNC** (Terminal Node Controller) for **APRS** and packet
-- Front-panel **APRS** operation without a computer
-- Optional **USB** link to a PC (MCP-4A, GPS log export, external APRS apps)
-- Can act as a temporary **digipeater**
+- Built-in **TNC** for **APRS** and packet
+- Front-panel APRS without a computer
+- USB link to a PC (**MCP-4A**, GPS log export, external apps)
+- Optional temporary **digipeater**
 - **EchoLink** DTMF memories
-- **Sky Command II** (advanced / optional module)
+- **Sky Command II** (advanced / optional)
 
-Kenwood’s MCP-4A software manages memories and many APRS settings from a PC.
+Kenwood’s **MCP-4A** is the PC view of nearly everything this book calls a “setting.”
 
 ---
 
 ## Chapter 2 — What you need
 
-1. TH-D72A with charged battery (and spare if possible)  
-2. Stock or dual-band HT antenna  
-3. Clear view of the sky for GPS (outdoors)  
-4. USB cable (supplied Mini-B style) if using MCP-4A  
-5. PC with **MCP-4A** (free from Kenwood) for backup / bulk edit  
-6. Official TH-D72A instruction manual as the menu encyclopaedia  
+1. TH-D72A with charged battery  
+2. Dual-band HT antenna  
+3. Clear sky view for GPS (outdoors)  
+4. USB cable (Mini-B style) if using MCP-4A  
+5. PC with **MCP-4A** (free from Kenwood)  
+6. Official TH-D72A instruction manual for exact menu numbers / display icons  
 
 ---
 
-## Chapter 3 — Analog FM (brief)
+## Chapter 3 — MCP-4A and the settings map
 
-You already know most of this from other HTs. On the TH-D72A:
+MCP-4A can **read** the radio and export an HTML “TH-D72 Information” report. That report’s **section headings** are the outline of this book’s settings chapters:
+
+| MCP-4A / export heading | This manual |
+|---|---|
+| Memory Channel | Chapter 5 |
+| Program Scan Memory | Chapter 6 |
+| Call Channel | Chapter 7 |
+| Weather Channel | Chapter 8 |
+| VFO | Chapter 9 |
+| Menu — Radio | Chapter 10 |
+| Menu — Sky Command II | Chapter 18 |
+| Menu — GPS | Chapter 11 |
+| Target Point | Chapter 12 |
+| Menu — APRS | Chapters 13–14 |
+| My Position / Status Text / User Phrases / NAVITRA Message | Chapter 15 |
+| DTMF Memory / EchoLink Memory | Chapter 16 |
+| Band Mask | Chapter 17 |
+
+### Safe MCP-4A habit
+
+1. **Read** from radio  
+2. **Save** a dated backup file  
+3. Edit  
+4. **Write** to radio only when deliberate  
+
+Never treat an Elmer’s personal export as a shared club file — strip callsigns and private DTMF/EchoLink codes first.
+
+### Front-panel vs MCP-4A
+
+Most items exist in both places. MCP-4A is better for bulk memories and reviewing APRS tables; the panel is better for field changes (TNC, BCON, POS, one-off status).
+
+---
+
+## Chapter 4 — Analog FM (brief)
+
+You already know most of this from other HTs:
 
 1. Power on; set volume and squelch.  
-2. Select **VFO** or a **memory** channel.  
-3. For a repeater: set receive frequency, **offset**, and **CTCSS encode** (tone) as required.  
-4. Use an appropriate power level (Low when close).  
+2. Select **VFO** or a **memory**.  
+3. For a repeater: receive frequency, **Shift/Offset**, and **CTCSS** (or DCS) as required.  
+4. Use an appropriate power level.  
 5. Identify with your callsign.
 
 ### Local practice targets (verify tones before TX)
@@ -95,248 +135,492 @@ You already know most of this from other HTs. On the TH-D72A:
 | VE1PSR | 147.270+ / 444.350+ | Halifax ARC |
 | VE1HNS | 146.940− | Halifax ARC |
 | Simplex | 146.520 / 446.000 | As appropriate |
+| APRS data | **144.390** | North America FM APRS |
 
-**Quirk to remember later:** when APRS is active, one band is often reserved as the **data band**. Voice may live on the other band (Chapter 4). Do not accidentally voice-TX on 144.390.
+**Quirk:** when APRS is active, one band is the **data band**. Keep voice on the other band. Do not voice-TX on 144.390.
 
-Menu entry of memories, scan, and CTCSS details: see the Kenwood manual. No special “UV-5R style” CPS — use the panel or **MCP-4A**.
+### TNC states (must know)
+
+Press **[TNC]** to cycle:
+
+| State | Meaning |
+|---|---|
+| **TNC Off** | Normal FM only |
+| **APRS** | What you want for APRS |
+| **PACKET** | Generic packet / host mode — **not** everyday APRS beaconing |
+
+### BCON
+
+**[BCON]** arms beacon transmit per the APRS TX Method setting. If the BCON indicator is not active, you are **not** beaconing.
 
 ---
 
-## Chapter 4 — Dual band, TNC modes, and the data band
+## Chapter 5 — Memory Channel
 
-### A and B bands
+Memories are the radio’s stored voice (and data) channels. MCP-4A shows one row per channel, often in **Groups 0–9**.
 
-The TH-D72A can receive on two frequencies (including same-band dual receive). Mentally assign:
+### Fields (what they mean)
 
-| Role | Typical classroom setup (NA) |
+| Field | Purpose |
 |---|---|
-| **Data / APRS band** | **144.390 MHz** FM |
-| **Voice band** | Local repeater or simplex on the other band (often UHF or another VHF channel) |
+| **No.** | Memory number |
+| **Memory Name** | Short label shown when “Display Memory Name” is On |
+| **Rx / Tx Frequency** | Receive; TX only needed when **Split** is On (odd splits) |
+| **Rx / Tx Step** | Tuning step used when you leave that memory into VFO-style edits |
+| **Offset** | Standard repeater offset amount (e.g. 0.60 MHz VHF, 5.00 MHz UHF in NA habit) |
+| **Tone/CTCSS/DCS** | Which encode/decode family is active: Off / Tone / CTCSS / DCS / Cross |
+| **Tx Cross / Rx Cross** | Cross-tone pairing when using mixed encode/decode |
+| **Tone / CTCSS / DCS** | The actual tone or code values (even if currently Off — stored for later) |
+| **Shift** | Simplex / Plus / Minus (classic repeater shift) |
+| **Split** | Independent TX frequency (true split), not just ± offset |
+| **Lockout** | Skip this channel during memory scan |
+| **Mode** | Usually **FM** for amateur voice; AM appears on air-band VFO ranges |
 
-### TNC key — three states that confuse everyone
+### How to use memories in class
 
-Press **[TNC]** to cycle modes. You must know which state you are in:
+- Store local repeaters + national simplex + **APRS 144.390** with clear names.  
+- Put APRS on a memorable early channel so students can find it quickly.  
+- Use **groups** if you travel (home / EmComm / trip) — see Menu — Radio → Memory.
 
-| State (conceptually) | What it means |
-|---|---|
-| **TNC Off** | Normal FM radio only — no APRS decode/TX |
-| **APRS** | TNC running APRS protocol — **this is what you want for APRS** |
-| **PACKET** | Generic packet mode — **not** the same as APRS beaconing |
-
-**Quirk:** If the TNC is Off or in Packet mode, you will not get normal APRS behaviour. Look for the APRS/TNC indicators on the display (often a **D** / APRS indication after the frequency — confirm on your firmware’s display legend in the official manual).
-
-### BCON key
-
-**[BCON]** arms beacon transmit according to Menu **3D0** method (Manual / PTT / Auto / SmartBeaconing).  
-
-**Quirk (very common):** If **BCON** is not shown as active on the display, you are **not** beaconing — even if GPS has a fix and you are on 144.390. Toggle BCON and verify the indicator.
+Analog detail (how to write a memory from the keypad): Kenwood instruction manual. No special “CPS” beyond MCP-4A.
 
 ---
 
-## Chapter 5 — APRS essentials (concepts)
+## Chapter 6 — Program Scan Memory
 
-### What APRS does here
+Program-scan memories define **frequency limits** (or dedicated scan endpoints) used by program scan, not everyday repeater memories.
 
-- Sends your **position** (and often speed/course/altitude) as AX.25 UI frames  
-- Receives others’ positions and **messages**  
-- Can show digipeater path info  
-- Can advertise voice **QSY** frequency info in status (optional)  
-- Relays via digipeaters / IGates to APRS-IS (then visible on sites such as aprs.fi)
+Same general field meanings as Memory Channel (name, RX/TX, tones, shift, mode).  
+
+**Classroom tip:** leave this alone until someone specifically wants band-segment scanning. Wrong program-scan edges confuse “why won’t it scan my repeaters?” troubleshooting.
+
+---
+
+## Chapter 7 — Call Channel
+
+One quick-access **Call** channel per band (typically 144 MHz and 440 MHz). The **Call** key jumps here.
+
+| Use | Example |
+|---|---|
+| National simplex parking spot | 146.520 / 446.000 |
+| Club “meet me” frequency | Whatever the class agrees |
+
+Fields match memory channels (freq, offset, tones, shift, mode). Keep Call channels **simple** and well known — they are for speed, not a second memory bank.
+
+Menu — Radio → Repeater → **Call Key** can change what the Call key does (Call vs other behaviours) — see Chapter 10.
+
+---
+
+## Chapter 8 — Weather Channel
+
+North American **NOAA / Weatheradio**-style channels (WX 1–10 class frequencies around 162 MHz). Receive-only for weather audio.
+
+Related settings:
+
+- Menu — Radio → **Weather Alert** A/B-Band — enables weather-alert sampling behaviour on that band  
+- Panel PF key can be assigned to **WX** for one-button access  
+
+**Canada note:** Continuously transmitting Weatheradio services have been discontinued in many areas; treat WX as “if you can still hear a transmitter” monitoring, not a guaranteed service. Do not TX on WX frequencies.
+
+---
+
+## Chapter 9 — VFO
+
+VFO is “live tuning,” not a stored memory. MCP-4A records the last VFO state per band segment.
+
+| Field | Purpose |
+|---|---|
+| **VFO Band** | Which A/B segment (e.g. A:144, B:118, B:440) |
+| **Rx Frequency / Step / Offset / tones / Shift / Mode** | Same ideas as memories |
+| **Programmable VFO** | Allowed tune range for that segment (keeps the dial inside a band) |
+
+**A-band vs B-band habit for APRS class:** put **144.390** on the **data band** (often A), voice repeater on the other. Confirm **Data Band** / **Packet Band** menus match that plan (Chapters 10 and 13).
+
+---
+
+## Chapter 10 — Menu — Radio
+
+Everyday radio behaviour. MCP-4A groups these under **Radio (AUX)**, **Transmit/Receive**, **Memory**, **DTMF**, **Repeater**, **PF Key**, and **Lock**.
+
+### Radio (AUX) — comfort and power management
+
+| Setting | What it does / how to use it |
+|---|---|
+| **Power-on Custom Start-up Screen** / **Bitmap File** | Optional splash graphic at power-on. Fun, not required for class. |
+| **Message** | Power-on text line (keep generic on shared radios — not a personal callsign billboard unless intentional). |
+| **Password** | Locks radio use behind a code. Off for training radios unless theft risk warrants it. |
+| **Contrast** | LCD contrast. Raise outdoors in glare; don’t max it until unreadable. |
+| **Lamp Timer** | How long the backlight stays on after a keypress. Shorter = battery. |
+| **Cursor Shift** | Auto-moves editing cursor after a timeout while programming. Off = you move the cursor yourself. |
+| **Time Zone** | Offset from UTC for clock/GPS-related time display. Set for Atlantic (or your operating area); wrong zone makes logged times look “wrong.” |
+| **GPS Logger Custom Start-up Screen** / **Bitmap** | Splash used when starting GPS logger mode — cosmetic. |
+| **Beep** | Key/GPS beep policy (e.g. Radio & GPS). Turn down socially when sitting in a net. |
+| **Automatic Power-off** | Shuts radio off after idle minutes. Great for battery; disastrous mid-APRS demo if students forget. Teach “APO is why it died.” |
+| **Save** | Battery-saver duty cycle (receiver sleep ratio). More save = longer battery, slightly slower open-squelch reaction. |
+| **Type** | Battery chemistry selection for correct gauge/charging behaviour (**match the pack** — Lithium vs Ni-MH, etc.). |
+| **Scan Resume** | **Time Operate** vs **Carrier Operate** — when scanning resumes after a busy channel. |
+| **Time Operate Time** | Seconds to stay on a busy channel before resume (Time Operate). |
+| **Carrier Operate Time** | Delay after carrier drops before resume (Carrier Operate). |
+
+### Radio (Transmit/Receive)
+
+| Setting | What it does / how to use it |
+|---|---|
+| **Packet Band** | Which band the **packet/TNC path** uses (A or B). Must agree with where you put 144.390. |
+| **VHF / UHF Band AIP** | Advanced Intercept Point / front-end toughness tradeoff. Off is common; turn On if strong nearby signals overload you (may reduce weak-signal feel). |
+| **Beat Shift** | Moves internal spurious “birdies.” Change Type if a birdie sits on a favourite frequency. |
+| **VOX** | Voice-operated TX. Usually **Off** on HTs in class (false triggers). |
+| **VOX on Busy** | Whether VOX may key while the channel is busy. Keep Off. |
+| **Gain** / **Delay Time** | VOX sensitivity and hang time — only if VOX is On. |
+| **Inhibit** | TX inhibit (blocks transmit). Know this exists when “radio won’t TX.” |
+| **RF Power A-Band / B-Band** | Independent power per band. Low near the repeater; High only when needed. |
+| **Time-out Timer** | Max continuous TX. Protects the radio and the repeater; leave enabled. |
+| **Weather Alert A/B-Band** | Weather alert check behaviour tied to that band. |
+| **Scan Time** | Optional limit on how long a scan session runs. |
+
+### Radio (Memory)
+
+| Setting | What it does / how to use it |
+|---|---|
+| **Memory Recall Method** | How memories are browsed (e.g. all bands vs restricted). |
+| **Group Link** | Links memory groups for scanning across groups. |
+| **Display Memory Name** | Show names instead of bare frequencies — **On** for training. |
+| **Group 0 … Group 9** | Labels for the ten memory groups (rename for Home / Travel / EmComm, etc.). |
+
+### Radio (DTMF)
+
+| Setting | What it does / how to use it |
+|---|---|
+| **DTMF Hold** | Keeps DTMF encoder behaviour latched while sending strings. |
+| **Pause Code Time** | Duration of pause codes embedded in DTMF memories. |
+| **DTMF Speed** | Milliseconds per digit — slower can help picky autopatch / EchoLink DTMF decoders. |
+
+### Radio (Repeater)
+
+| Setting | What it does / how to use it |
+|---|---|
+| **1750 Hz Transmit Hold** | European tone-burst style access — usually irrelevant in NA. |
+| **Automatic Repeater Offset** | Auto-applies standard shift when you tune repeater segments. Convenient; still verify odd splits. |
+| **Call Key** | What the Call key does (Call channel vs other assignments). |
+
+### Radio (PF Key)
+
+Programmable function keys on mic and panel (PF1–PF3 / Panel PF1). Assign shortcuts students actually need (examples: **A/B**, **VFO**, **MR**, **WX**, APRS-related jumps if offered).
+
+**Teaching tip:** standardize PF keys on club radios so muscle memory transfers.
+
+### Radio (Lock)
+
+| Setting | What it does / how to use it |
+|---|---|
+| **Key** | Panel key lock On/Off. |
+| **Type** | Which lock profile applies when Key lock is used. |
+| **Mic PF Key** | Lock mic PF keys separately. |
+| **DTMF Key** | Lock DTMF pad to prevent pocket beeps / accidental codes. |
+
+---
+
+## Chapter 11 — Menu — GPS
+
+GPS feeds APRS positions, the **POS** display, logging, and optional NMEA output to a PC.
+
+| Setting | What it does / how to use it |
+|---|---|
+| **Operating Mode** | GPS operating profile (e.g. Normal). Use Normal unless following a special Kenwood procedure. |
+| **Battery Saver** | Lets the GPS sleep on a schedule to save power. **Auto** is fine for portable use; if fixes are flaky while walking slowly, try less aggressive saving. |
+| **PC Output** | Streams GPS/NMEA toward the USB/serial side for mapping apps. Off unless a PC app needs it. |
+| **SBAS** | Satellite-based augmentation (WAAS-class). Can improve accuracy when satellites/SBAS are visible; Off is common default. |
+| **Datum** | Keep **WGS-84** unless you have a specialist mapping reason. |
+| **$GPGGA / $GPGLL / $GPRMC / $GPVTG / $GPZDA / $GPGSA / $GPGSV** | Which NMEA sentence types are emitted when PC output is active. For most APRS-only use, leave defaults; enable the set your PC application documents. |
+| **Record Method** | How the track logger decides to store a point: **Time**, distance, or related modes. |
+| **Interval** | Seconds between log points when recording by time. |
+| **Distance** | Minimum movement before logging another point (when using distance method). |
+| **Wrap When Full** | If On, oldest points are overwritten when the log fills; if Off, logging stops when full. |
+| **Select Target Point** / **Target Point** | Which stored target is active for bearing/distance displays — see Chapter 12. |
+
+### Field habit
+
+- Outdoors for a fix before blaming APRS.  
+- Logging ≠ beaconing: you can log a hike with BCON off.  
+- Export logs with MCP-4A (e.g. KML) after exercises.
+
+---
+
+## Chapter 12 — Target Point
+
+Up to several named lat/lon targets (plus grid). The radio can show direction/distance toward the selected target.
+
+| Column | Meaning |
+|---|---|
+| **Use** | Which target slot is active |
+| **Name** | Label (trailhead, EOC, parking, etc.) |
+| **Latitude / Longitude** | Target coordinates |
+| **GS** | Grid square derived/associated display |
+
+**Classroom use:** set one target to the meeting site so students see GPS navigation features without APRS TX.
+
+---
+
+## Chapter 13 — Menu — APRS (concepts + Basic / Packet / TX-RX / GPS)
+
+This is the heart of the radio. MCP-4A’s **Menu — APRS** groups match the subsections below.
 
 ### North America frequency
 
-| Region | Common APRS FM frequency |
+Put **144.390 MHz FM** on the **Data Band**.
+
+### APRS (Basic)
+
+| Setting | What it does / how to use it |
 |---|---|
-| **North America** | **144.390 MHz** |
-| Europe (FYI) | 144.800 MHz |
+| **Operating Mode** | **APRS** vs packet-oriented modes. Everyday position beaconing wants **APRS** (and the front-panel TNC in APRS, not Packet). |
+| **My Callsign** | **Required.** Without it, the radio will not TX APRS. Include SSID (handhelds often use `-7`). |
+| **APRS Lock** | Limits accidental changes to APRS-critical settings while operating. Useful once configured. |
+| **Speed / Altitude** | Include speed and altitude in position packets when On. |
+| **Position Ambiguity** | Coarsens reported position for privacy. Off = full precision available from GPS. |
+| **Method** (TX Beacon Method) | **Manual** / **PTT** / **Auto** / **SmartBeaconing**. Start Manual or Auto in class; SmartBeaconing after manners are understood. |
+| **Initial Interval** | Base beacon interval for Auto (and related timing). Prefer **5–10+ minutes** for desk/slow portable — not sub-minute hammering. |
+| **Decay Algorithm** | When nearly stopped, doubles intervals over time so you don’t flood the channel. Keep **On** for stationary/portable. |
+| **Proportional Pathing** | Rotates path aggressiveness over time (fewer hops often, fuller path less often) to cut network load. Works with Decay; **does not apply while SmartBeaconing is selected**. |
+| **Stopped / Moving [knots]** | Speed thresholds that choose Decay vs Proportional Pathing behaviour when both are enabled. |
+| **Station Icon** | APRS symbol table/icon (people recognize “Kenwood” / person / bike icons). Pick something true to how you operate. |
+| **Rx Beep / Tx Beep** | Audible cues for received/transmitted APRS traffic. Rx All is educational; Tx Off is less annoying in a room. |
+| **Special Call** | Callsign that gets elevated alerting when it messages/appears — optional Elmer/family watch list. |
 
-Canada classroom default: put **144.390** on the data band.
+### First beacon checklist
 
-### My Callsign (required)
+1. **My Callsign** set (with SSID).  
+2. Data band = **144.390**.  
+3. **[TNC]** → **APRS**.  
+4. GPS fix (or My Position — Chapter 15).  
+5. Method + Initial Interval chosen.  
+6. **[BCON]** On (indicator visible).  
+7. Verify locally and/or on [aprs.fi](https://aprs.fi).
 
-Without **My Callsign**, the radio **will not transmit** APRS packets.
+### APRS (Packet) — filters and path
 
-- Menu **300** — program your callsign (with optional **SSID**)  
-- Handheld convention often uses SSID **`-7`** (example: `VE1ABC-7`)  
-- Use a consistent SSID so aprs.fi history stays readable  
+These control **what you accept** and **how your packets are addressed** through digipeaters.
 
-### Position source
+#### Receive filters (Position Limit + type filters)
 
-| Menu / control | Purpose |
+| Setting | What it does / how to use it |
 |---|---|
-| Internal GPS | Usual portable choice — go outdoors for a fix |
-| Menu **331** (Input Type / related GPS menus) | Choose GPS vs other inputs |
-| Menu **360** My Position | Manual fixed position if GPS Off / indoor demo |
-| **[POS]** | View position |
+| **Position Limit** | Ignore stations farther than a set distance (keeps the list local). Off = no distance filter. |
+| **Weather / Digipeater / Mobile / Object / NAVITRA / Others / 1-Way** | Include/exclude those packet types in what you store/display. Turning Digipeater Off hides digi stations — fine for a quiet list, bad if you are studying the network. |
+| **ALTNET** | Alternate network TOCALL filtering — leave empty unless you are doing a special altnet exercise. |
+| **Network** | Normally **APRS**. |
 
-**Quirk:** Indoors, GPS may never fix. For classroom demos without sky view, set a manual My Position — or step outside.
+#### Path / New-N paradigm
 
----
-
-## Chapter 6 — First successful beacon (checklist)
-
-Do these in order:
-
-1. **Menu 300** — My Callsign set (with SSID).  
-2. Data band frequency = **144.390** (NA).  
-3. **[TNC]** until you are in **APRS** mode (not Off, not Packet).  
-4. GPS On; wait for a fix outdoors (or set My Position).  
-5. Menu **3D0** — TX Beacon Method:  
-   - Start with **Manual** or **Auto** for learning  
-   - Use **SmartBeaconing** after you understand rates  
-6. Menu **3D1** — Initial Interval: for a desk/slow walk, prefer **5–10 minutes** (or longer), not 0.2–1 minute, unless temporarily testing.  
-7. Press **[BCON]** so beaconing is **On** (indicator visible).  
-8. Force a beacon if needed (method-dependent: Manual press, or **[F]+[BCON]** quick beacon when Auto/Smart is selected — see manual).  
-9. Confirm:  
-   - Local decode of your own packet (sometimes via digi bounce shows “My Position”), and/or  
-   - Your call-SSID on [aprs.fi](https://aprs.fi) after an IGate hears you  
-
-### Path (digipeater path)
-
-Menu group for packet path (often discussed as **3H0** / path menus in Kenwood docs):
-
-| Habit | Recommendation |
+| Setting | What it does / how to use it |
 |---|---|
-| Dense urban / good IGate | Short path — often **`WIDE1-1`** only, or local guidance |
-| Sparse area | Sometimes **`WIDE1-1,WIDE2-1`** |
-| Never | Huge hop counts that flood the network |
+| **Type** | Path helper mode; **New-N Paradigm** is the modern WIDEn-N style helper. |
+| **WIDE1-1** | Enables the common first-hop fill-in style path element when using the helper. |
+| **RELAY / ABBR** | Legacy path aliases — usually unused in modern NA APRS. |
+| **Total Hops** | How many digi hops your helper builds (often 1–2). **2** is a common portable starting point; use fewer in dense RF. |
+| **Path** | Manual path override when not relying solely on the helper. |
 
-Follow current local APRS etiquette; paths are a social convention as much as a technical setting.
+**Manner reminder:** short paths in dense areas; never invent huge hop counts “so I’ll be heard everywhere.”
 
----
+### APRS (Transmit/Receive)
 
-## Chapter 7 — Beacon methods and network manners
-
-### Menu 3D0 methods
-
-| Method | Behaviour (summary) |
+| Setting | What it does / how to use it |
 |---|---|
-| **Manual** | You press BCON (or equivalent) each time you want a posit |
-| **PTT** | Beacon tied to PTT-related behaviour (see manual) |
-| **Auto** | Beacons on Initial Interval while BCON is on |
-| **SmartBeaconing** | Rate rises with speed; corner pegging on turns |
+| **Data Band** | A or B — must be the band sitting on 144.390. |
+| **Data Speed** | **1200** bps for normal NA FM APRS. **9600** is a different use case; also breaks Voice Alert tone demodulation. |
+| **DCD Sense** | When the TNC is allowed to TX: wait for data-band clear (**D or RxD Band**), wait for both bands, or **Ignore DCD** (can collide — avoid unless you know why). |
+| **Tx Delay** | Milliseconds of preamble before packet data — helps slow squelch/digi rise times. 200 ms is a common starting point; increase if digis chop your first bytes. |
+| **Voice Alert** | Uses CTCSS on the APRS channel as a “someone nearby is on Voice Alert” proximity idea, with voice QSO potential. Off unless the local group uses it. |
+| **CTCSS Frequency** | Tone used for Voice Alert (commonly discussed as 100.0 Hz in Kenwood APRS materials). |
+| **Message Group Code** | Group names your radio will accept as group-addressed messages (defaults often include ALL, QST, CQ, KWD). |
+| **Bulletin Group** | Bulletin group filter/name — optional. |
 
-### Decay algorithm (Menu 3E0 area)
+### APRS (GPS) — ports and waypoints
 
-When you are **stationary**, decay can stretch the interval (1 → 2 → 4 → … minutes) so you do not hammer 144.390. Keep it enabled for portable/stationary use unless you have a reason not to.
-
-### SmartBeaconing tips (from field practice)
-
-- Do not set the “slow speed” threshold so low that GPS jitter while standing still looks like motion (unnecessary beacons).  
-- Highway use: SmartBeaconing shines; still avoid absurdly short minimum intervals in crowded RF areas.  
-- After testing, return to neighbour-friendly rates.
-
----
-
-## Chapter 8 — Receiving stations, lists, and messages
-
-### Seeing others
-
-With TNC in APRS mode on 144.390, stations appear as they are received. Browse the station list / detail pages (Kenwood provides multiple information pages per station, including digipeater path).
-
-### APRS messages
-
-- The TH-D72A can send/receive short APRS messages (stored message capacity is limited — on the order of **100** messages, length limits apply).  
-- Status texts and user phrases are separate editable strings (status length on the order of **42** characters; user phrases shorter).  
-- Special-call / notification features can alert you when a designated station messages you.
-
-Use messaging sparingly on RF; it shares the APRS channel.
-
-### QSY (frequency) in status
-
-Optional feature: advertise the voice frequency you are using so others can QSY to you.
-
-**Quirk:** QSY info is tied to **status text** configuration. If status TX is disabled / empty, QSY-in-status will not do what you expect. Enable status text, enter text, set status TX rate, then enable QSY-related menus (**3A0** area: QSY in status, tone/narrow, shift/offset as desired).
-
----
-
-## Chapter 9 — GPS logging
-
-The TH-D72A can log track points (capacity on the order of **thousands** of points — Kenwood cites up to about **5,000**). Log interval can follow time, distance, or beacon events.
-
-Export via **MCP-4A** to formats such as **KML** for mapping on a PC.
-
-Classroom tip: logging is separate from APRS TX. You can log without beaconing aggressively.
-
----
-
-## Chapter 10 — Digipeater mode (advanced)
-
-The TH-D72A can digipeat (relay) packets — useful in exercises or temporary coverage gaps.
-
-| Topic | Guidance |
+| Setting | What it does / how to use it |
 |---|---|
-| Enable | Digipeat menus (e.g. **3K0** / UI digipeat / aliases — see official manual) |
-| When to use | Coordinated events, EmComm drills, sparse areas — **not** as an always-on urban digi without a plan |
-| Risk | Extra hops increase channel load |
-| Alias | Configure aliases carefully so you do not unintentionally relay everything |
-
-**Training rule:** Leave digipeater **Off** unless an Elmer asks you to enable it for a specific exercise.
+| **GPS Port Baud Rate** | Serial rate for external GPS I/O. |
+| **GPS Port Input / Output** | External GPS in, or NMEA/waypoints out, via the GPS port path. Off for pure internal-GPS HT use. |
+| **PC Output** | APRS-side PC output enable (complementary to Menu — GPS PC Output — enable only when an app needs it). |
+| **Waypoint Format / Length / Output** | How received stations are emitted as GPS waypoints to an external GPS/moving-map (NMEA, character length, which stations). |
+| **WX Station Tx / WX Tx Interval** | If the radio is used with weather-station style TX — advanced; Off for normal HT class. |
+| **My Position Channel in Use** | Which manual My Position slot is active when not using live GPS. |
+| **Target Point** (APRS GPS page) | Cross-link to target/My Position references for navigation displays. |
 
 ---
 
-## Chapter 11 — Packet mode, PC TNC, IGate (overview)
+## Chapter 14 — Menu — APRS (Message, Digipeat, Display, SmartBeaconing, NAVITRA)
 
-| Mode | Use |
+### APRS (Message)
+
+| Setting | What it does / how to use it |
 |---|---|
-| APRS (on-radio) | Everyday position/messaging |
-| PACKET | Host-mode / PC programs talking to the internal TNC over USB |
-| IGate | Possible with suitable PC software + internet — **advanced**; not a first-day topic |
+| **Position Comment** | Standard short comment field (Off Duty, En Route, In Service, etc.) baked into position packets. Pick something honest. |
+| **QSY in Status** | Embeds your voice frequency into status so others can QSY to you. |
+| **Tone/Narrow** / **Shift/Offset** | Whether QSY info also carries tone and shift details. |
+| **Status Text Channel in Use** | Which of the Status Text slots is active. |
+| **Status Text** | Points at the Status Text table (Chapter 15). **QSY needs a real status configuration** — empty/disabled status is a common “why won’t QSY work?” failure. |
+| **User Phrases** | Quick canned text for messaging (Chapter 15). |
+| **Reply** / **Delay Time** / **Text** / **Reply To** | Automatic reply to incoming messages (delay, text, which sender pattern). Keep **Off** unless you have a deliberate unattended reason — easy to create RF noise loops. |
 
-USB port / PC output menus (e.g. around **350**) control what leaves the radio toward the computer. Enable only when needed; lock panels if you bump keys in the field.
+### APRS (Digipeat) — advanced
 
----
-
-## Chapter 12 — EchoLink memories, Sky Command, MCP-4A
-
-### EchoLink DTMF memories
-
-- About **10** dedicated EchoLink DTMF memories  
-- Store node numbers / commands; MCP-4A can manage them  
-- Still need an EchoLink-ready repeater/node on the air — the radio alone is not an internet gateway  
-
-### Sky Command II
-
-Allows linking a compatible Kenwood HF setup with the handheld as a commander (advanced HF remote topic). Skip until HF mentoring is available.
-
-### MCP-4A (do use this)
-
-| Task | Why |
+| Setting | What it does / how to use it |
 |---|---|
-| Backup memories + APRS settings | Recover from menu experiments |
-| Edit many memories | Faster than keypad |
-| Manage EchoLink memories | Less typing |
-| Export GPS logs | After field exercises |
-| TravelPlus import (where used) | Trip memory builds |
+| **Digipeat** | Master enable for the HT acting as a digipeater. **Off** unless an exercise asks for it. |
+| **UIcheck Time** | Duplicate suppression window (seconds) so you don’t re-digi the same frame endlessly. |
+| **UIdigi** / **Aliases** | Classic UI digipeat alias matching. |
+| **UIflood** / **UIflood Alias** / **Substitution** | Flood-style digi behaviour and alias substitution (e.g. ID). Easy to misconfigure — Elmer territory. |
+| **UItrace** / **UItrace Alias** | Trace-style digipeat (often temporary aliases like TEMP). |
 
-Always **read from radio → save file → edit → write** carefully. Keep dated backups.
+**Training rule:** digipeater **Off** unless coordinated. An HT digi in the wrong place adds load without adding useful coverage.
+
+### APRS (Display)
+
+| Setting | What it does / how to use it |
+|---|---|
+| **Display Area** | How much of the screen APRS pop-ups may use. |
+| **Interrupt Display Time** | How long a new-station interrupt stays visible. |
+| **Cursor Control** | Whether the list cursor follows new activity. |
+| **Speed, Distance** | Units (e.g. mi/h & mile vs metric). |
+| **Altitude, Rain** | feet/inch vs metric weather units. |
+| **Temperature** | °F vs °C. |
+| **Grid Format** | Maidenhead vs other grid display options. |
+| **Position** | Coordinate format (e.g. `dd mm.mm`). |
+
+Set units once for the class (Canada clubs often prefer metric — match what students already use on aprs.fi).
+
+### APRS (SmartBeaconing)
+
+Used only when **Method = SmartBeaconing**. When SmartBeaconing is selected, **Initial Interval / Decay / Proportional Pathing no longer govern** TX timing the same way — SmartBeaconing takes over.
+
+| Setting | What it does / how to use it |
+|---|---|
+| **Low Speed** | Below this, beacons at **Slow Rate**. Set high enough that GPS jitter while standing still does not look like “motion.” |
+| **High Speed** | Above this, beacons at **Fast Rate**. |
+| **Slow Rate** | Interval when crawling/stopped (minutes). |
+| **Fast Rate** | Interval when moving fast (seconds). Don’t set absurdly short in a crowded RF area. |
+| **Turn Angle** | Minimum course change to trigger a corner-peg beacon. |
+| **Turn Slope** | Makes corner pegging more sensitive at lower speeds (Kenwood units: 10°/speed style scaling). |
+| **Turn Time** | Minimum time between corner-peg beacons. |
+
+**Practice:** demo SmartBeaconing on a drive; return Method to Auto/Manual afterward if the radio will sit on a desk.
+
+### APRS (NAVITRA)
+
+Japanese NAVITRA group messaging features (**Group Mode**, **Group Code**, message channel). Not used in normal North American club APRS. Leave disabled / unused unless teaching a specialty topic.
 
 ---
 
-## Chapter 13 — Troubleshooting
+## Chapter 15 — My Position, Status Text, User Phrases, NAVITRA Message
+
+These MCP-4A tables back the APRS Message/GPS menus.
+
+### My Position
+
+Manual lat/lon (and grid) slots used when GPS is unavailable or you intentionally beacon a fixed position (classroom, tent, EOC).
+
+| Column | Meaning |
+|---|---|
+| **Use** | Active slot |
+| **Name** | Label |
+| **Latitude / Longitude / GS** | Fixed position |
+
+**Quirk:** Indoors with no GPS fix, set My Position or you will not get useful posits.
+
+### Status Text
+
+| Column | Meaning |
+|---|---|
+| **Use** | Active status slot |
+| **Message** | Status string (length-limited — on the order of 40+ characters) |
+| **Tx Rate** | How often status is attached/sent (Off = don’t send that status) |
+
+Use short, useful text (“HARC demo”, “QSY 146.520”, event names). Enable a Tx Rate if you want the world to see it.
+
+### User Phrases
+
+Canned phrases for composing APRS messages quickly (short strings). Pre-load class-useful phrases (“QRZ?”, “QSY voice”, “At site”) without typing on the keypad in the cold.
+
+### NAVITRA Message
+
+Message slots for NAVITRA — skip for NA club work.
+
+---
+
+## Chapter 16 — DTMF Memory and EchoLink Memory
+
+### DTMF Memory
+
+Ten general DTMF memories (name + code) for autopatch, controller commands, or other DTMF sequences. Speed/pause come from Menu — Radio → DTMF.
+
+### EchoLink Memory
+
+Ten EchoLink-oriented DTMF memories (name/callsign + code). Typical contents are node numbers and control codes (connect/disconnect patterns).
+
+| Reality check | |
+|---|---|
+| The HT stores **DTMF** | It does **not** create an internet EchoLink gateway by itself |
+| You still need | An on-air EchoLink-ready repeater/link and permission/manner |
+
+MCP-4A is the sane way to edit these. Do not publish personal node lists with private access codes in shared manuals.
+
+---
+
+## Chapter 17 — Band Mask
+
+Enables or masks which band segments appear on A (upper) and B (lower):
+
+- A: 144 / 440  
+- B: 118 / 144 / 300 / 440  
+
+**Use:** Hide segments you never use to simplify band switching in class.  
+**Caution:** Masking 144 on the data band’s side is a great way to “lose” APRS — don’t.
+
+---
+
+## Chapter 18 — Menu — Sky Command II
+
+| Setting | What it does / how to use it |
+|---|---|
+| **Commander Callsign** | Callsign identity for the handheld commander role |
+| **Transporter Callsign** | Callsign of the HF transporter / base side |
+| **Tone Frequency** | CTCSS used on the Sky Command link |
+
+Sky Command II remotes a compatible Kenwood HF station via the handheld. **Skip until HF mentoring is available.** Leave callsigns at safe placeholders on shared radios so nobody accidentally keys a link.
+
+---
+
+## Chapter 19 — Troubleshooting
 
 | Symptom | Likely cause | What to try |
 |---|---|---|
-| No APRS TX | My Callsign empty | Menu **300** |
-| No APRS TX | TNC Off or Packet mode | **[TNC]** → **APRS** |
+| No APRS TX | My Callsign empty | Set My Callsign + SSID |
+| No APRS TX | TNC Off or Packet | **[TNC]** → **APRS** |
 | No APRS TX | BCON not armed | **[BCON]** until indicator shows |
-| No APRS TX / weird posits | No GPS fix | Go outside; or set My Position |
-| Hear nothing on APRS | Wrong frequency | **144.390** (NA) on data band |
-| Hear others, not on aprs.fi | No local IGate heard you | Move; check path; ask locals |
-| Beaconing too often | Interval / SmartBeaconing too aggressive | Lengthen interval; enable decay |
-| Voice on 144.390 by mistake | Talking on data band | Move voice to the other band |
-| Dual things “broken” | Locked keys / wrong band focus | Check lock; which band is TX |
+| No APRS TX / odd posits | No GPS fix | Go outside; or set My Position |
+| Hear nothing on APRS | Wrong frequency / data band | **144.390** on Data Band; match Packet Band |
+| Collisions / chopped packets | DCD / Tx Delay | Prefer DCD sense on data band; increase Tx Delay |
+| Hear others, not on aprs.fi | No IGate heard you | Move; shorten/fix path; ask locals |
+| Beaconing too often | Interval / SmartBeaconing | Lengthen rates; enable Decay; check Low Speed jitter |
+| QSY info missing | Status empty / Tx Rate Off | Configure Status Text + QSY in Status |
+| Voice on 144.390 | TX on data band | Move voice to the other band |
+| Radio “won’t TX” | Inhibit / lock / TOT / password | Check Menu — Radio TX Inhibit, Lock, TOT, Password |
+| Radio dies in class | APO / Save / lamp | Check Automatic Power-off |
+| Digi mystery traffic | Digipeat left On | Turn Digipeat Off after exercises |
+| Units look “American” | Display units | Menu — APRS Display unit settings |
 
 ---
 
-## Chapter 14 — Suggested training path
+## Chapter 20 — Suggested training path
 
-1. **Day A — Analog only:** one repeater memory, one simplex contact (Chapter 3).  
-2. **Day B — APRS receive:** 144.390, TNC APRS, watch stations (no TX).  
-3. **Day C — First beacon:** Chapters 5–6; confirm on aprs.fi.  
-4. **Day D — Manners:** intervals, decay, path (Chapter 7).  
-5. **Day E — Messages / QSY** (Chapter 8).  
-6. **Optional:** digipeater drill, MCP-4A backup, GPS log export.  
+1. **Analog:** one repeater memory + simplex (Chapters 4–5).  
+2. **Tour MCP-4A headings** so students know where settings live (Chapter 3).  
+3. **APRS receive only:** 144.390, TNC APRS, watch the list.  
+4. **First beacon:** Chapter 13 checklist → aprs.fi.  
+5. **Manners:** interval, Decay, path, Proportional Pathing.  
+6. **Status / messages / QSY** (Chapters 14–15).  
+7. **Optional:** SmartBeaconing drive, GPS log export, digipeater drill, EchoLink DTMF demo.  
 
 ---
 
@@ -345,29 +629,24 @@ Always **read from radio → save file → edit → write** carefully. Keep date
 ### APRS bring-up (NA)
 
 ```
-My Callsign (Menu 300)  →  144.390 on data band
+My Callsign  →  144.390 on Data Band
 TNC → APRS  →  GPS fix (or My Position)
-Beacon method (3D0) + interval (3D1)
-BCON ON (indicator visible)  →  verify aprs.fi
+Method + Initial Interval  →  BCON ON
+Verify aprs.fi / local decode
 ```
 
-### Keys to memorize
+### Keys
 
 | Key | Role |
 |---|---|
 | **TNC** | Off / APRS / Packet |
-| **BCON** | Beacon arm / method actions |
+| **BCON** | Arm beaconing |
 | **POS** | Position display |
-| **PTT** | Voice (keep off 144.390 when APRS data band is selected for TX) |
+| **PTT** | Voice — keep off the data band |
 
-### Local voice memories (fill in your training codeplug)
+### Settings map (MCP-4A order)
 
-| Label | Freq / tone | Notes |
-|---|---|---|
-| VE1DAR-V | 147.150+ | |
-| VE1PSR-V | 147.270+ | |
-| VE1HNS-V | 146.940− | |
-| APRS | 144.390 | Data band |
+Memory → Program Scan → Call → Weather → VFO → Menu Radio → Sky Command → Menu GPS → Target Point → Menu APRS → My Position → Status Text → User Phrases → NAVITRA → DTMF → EchoLink → Band Mask
 
 ---
 
@@ -376,9 +655,10 @@ BCON ON (indicator visible)  →  verify aprs.fi
 | Version | Date | Notes |
 |---|---|---|
 | 0.1 | 2026-07-31 | Scaffold |
-| 0.2 | 2026-07-31 | Full education draft: light analog, deep APRS/special features |
+| 0.2 | 2026-07-31 | Light analog, deep APRS narrative |
+| 0.3 | 2026-07-31 | Restructured around MCP-4A export headings; settings explained without personal values |
 
-Menu numbers follow common TH-D72A/E documentation; if your firmware labels differ slightly, match by function name (My Callsign, TX Beacon Method, etc.).
+Menu numbers in the field may be confirmed against the Kenwood instruction manual for your firmware; this book prefers **setting names** (as in MCP-4A) so wording stays stable across docs.
 
 ---
 
@@ -389,10 +669,9 @@ Original HARC/DARC training narrative. Not a copy of Nifty or third-party commer
 | Source | Use |
 |---|---|
 | Kenwood TH-D72A Instruction Manual | Authoritative menus and specifications |
-| Kenwood TH-D72A/E APRS / product primers (Kenwood PDF materials) | APRS feature overview, regional frequency table, MCP-4A roles |
-| Kenwood MCP-4A documentation | PC programming / GPS export |
-| SSIARS “Tips on using a TH-D72A” (ssiarc.ca) | Practical BCON/TNC quirks and SmartBeaconing field advice (paraphrased) |
-| Community APRS best-practice notes for TH-D72A | QSY/status interdependency; path manners |
-| aprs.fi / APRS network practice | Verification of beacons via IGate |
+| Kenwood TH-D72A/E APRS / In-Depth materials | Decay, Proportional Pathing, SmartBeaconing, QSY, Voice Alert concepts |
+| Kenwood MCP-4A (export section headings) | Outline of settings chapters in this book |
+| SSIARS practical TH-D72A notes | BCON/TNC field quirks (paraphrased) |
+| aprs.fi / APRS network practice | Beacon verification |
 
 *Independent educational material for Halifax & Dartmouth Amateur Radio Clubs. Not affiliated with or endorsed by JVCKENWOOD / Kenwood.*
