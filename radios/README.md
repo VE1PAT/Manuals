@@ -12,6 +12,7 @@ One subfolder per radio model covered by club **training** materials.
 | `Kenwood-TH-D72A/` | Kenwood TH-D72A (club list: TH-72A) |
 | `Kenwood-TH-G71A/` | Kenwood TH-G71A (club list: G71A) |
 | `Motorola-GM300/` | Motorola GM300 |
+| `Yaesu-FT-450/` | Yaesu FT-450 / FT-450D |
 | `Yaesu-FT-710/` | Yaesu FT-710 |
 | `Yaesu-FT-5DR/` | Yaesu FT-5DR |
 | `Yaesu-FT-2600M/` | Yaesu FT-2600M |

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yaesu FT-450 — CW Beacon Memory Aide-Mémoire</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.6in;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0.6in;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 11pt;
+    line-height: 1.35;
+    color: #000;
+    background: #fff;
+  }
+
+  h1 {
+    margin: 0 0 0.15em;
+    font-size: 18pt;
+    font-weight: 700;
+    border-bottom: 2px solid #000;
+    padding-bottom: 0.25em;
+  }
+
+  h2 {
+    margin: 1.1em 0 0.4em;
+    font-size: 13pt;
+    font-weight: 700;
+    border-bottom: 1px solid #000;
+    padding-bottom: 0.15em;
+    page-break-after: avoid;
+  }
+
+  h3 {
+    margin: 0.8em 0 0.3em;
+    font-size: 11.5pt;
+    font-weight: 700;
+    page-break-after: avoid;
+  }
+
+  p {
+    margin: 0.35em 0;
+  }
+
+  .meta {
+    margin: 0.4em 0 0.8em;
+    font-size: 10pt;
+  }
+
+  .box {
+    border: 1.5px solid #000;
+    padding: 0.45em 0.6em;
+    margin: 0.5em 0;
+    page-break-inside: avoid;
+  }
+
+  .box.important {
+    border-width: 2px;
+  }
+
+  ol.steps {
+    margin: 0.3em 0 0.6em 1.25em;
+    padding: 0;
+  }
+
+  ol.steps > li {
+    margin: 0.35em 0;
+    page-break-inside: avoid;
+  }
+
+  ol.steps ol {
+    margin: 0.25em 0 0.25em 1.1em;
+    padding: 0;
+  }
+
+  code, .msg {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 10.5pt;
+  }
+
+  .msg {
+    display: block;
+    border: 1px solid #000;
+    padding: 0.4em 0.55em;
+    margin: 0.35em 0;
+    letter-spacing: 0.02em;
+    page-break-inside: avoid;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.5em 0;
+    font-size: 10.5pt;
+    page-break-inside: avoid;
+  }
+
+  th, td {
+    border: 1px solid #000;
+    padding: 0.3em 0.45em;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    font-weight: 700;
+    background: #eee;
+  }
+
+  ul.check {
+    list-style: none;
+    margin: 0.3em 0;
+    padding: 0;
+  }
+
+  ul.check li {
+    margin: 0.25em 0;
+    padding-left: 1.4em;
+    position: relative;
+  }
+
+  ul.check li::before {
+    content: "☐";
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .footer {
+    margin-top: 1.2em;
+    padding-top: 0.4em;
+    border-top: 1px solid #000;
+    font-size: 9pt;
+  }
+
+  @media print {
+    body {
+      padding: 0;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1>Yaesu FT-450 — CW Beacon Memory Aide-Mémoire</h1>
+
+<div class="meta">
+  <p>Companion sheet to the Yaesu FT-450 / FT-450D operating manual for programming and sending CW Beacon text banks. Assumes normal HF station operation is already understood.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>1. What this feature does</h2>
+
+<p>The FT-450 stores up to three CW message banks (<strong>BCN TXT</strong> 1, 2, and 3). Each bank holds up to 40 characters. Banks can be chained for longer text (up to 118 characters total), or kept separate and played one at a time.</p>
+
+<p>For a Silent Key / Final Call style ceremony, keep the banks separate:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bank</th>
+      <th>Typical use</th>
+      <th>Played with</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td>Final Call (three calls of the SK callsign)</td>
+      <td><strong>PLAY1</strong></td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td>Closing (NIL / 73 / SK)</td>
+      <td><strong>PLAY2</strong></td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td>Unused, or a third message</td>
+      <td><strong>PLAY3</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ============================================================ -->
+<h2>2. Example messages (VE1NB Last Call from VE0CNM)</h2>
+
+<p>Substitute callsigns for the next event. Keep each bank under 40 characters.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bank</th>
+      <th>Example text</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td><code>VE1NB VE1NB VE1NB DE VE0CNM K</code></td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td><code>VE1NB DE VE0CNM NIL 73 SK</code></td>
+      <td>27</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Generic pattern:</p>
+<div class="msg">SKCALL SKCALL SKCALL DE YOURCALL K</div>
+<div class="msg">SKCALL DE YOURCALL NIL 73 SK</div>
+
+<!-- ============================================================ -->
+<h2>3. Two display quirks that matter</h2>
+
+<div class="box important">
+  <p><strong>Arrow → means “continue to the next bank.”</strong></p>
+  <p>On the radio LCD this special character looks like an arrow <strong>→</strong>. Some printed manuals show it as “Æ”. It is <em>not</em> a quiet end-of-message mark. If → is placed after Bank 1 text, PLAY1 will send Bank 1 and then Bank 2 immediately.</p>
+  <p>For separate one-shot messages: end each bank on the last real letter only. Leave unused slots as spaces. Do not put → at the end.</p>
+  <p><strong>BCN TIM = OFF</strong> stops timed repeating of a finished beacon cycle. It does not stop bank chaining. Chaining is controlled only by →.</p>
+</div>
+
+<div class="box">
+  <p><strong>Space character and “ghost” slots.</strong></p>
+  <p>Space on this LCD often looks like a tiny “u” or small blank glyph. Find it by turning the large dial clockwise through the character list to the end, then select that space glyph. Confirm with a play test: a true space is a pause; a wrong glyph sends Morse.</p>
+  <p>If Bank 1 needs many turns of the large dial before letters appear, leftover (“ghost”) characters are still in that bank. Overwrite every slot in the bank with spaces before entering new text. Bank 2 and 3 often look clean simply because they were empty. A factory reset clears this fully if needed.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>4. Controls used for beacon programming</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Control</th>
+      <th>Use in this procedure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>[F]</strong></td>
+      <td>Hold 1 second to enter or leave Menu mode</td>
+    </tr>
+    <tr>
+      <td><strong>[DSP/SEL]</strong></td>
+      <td>Turn = select menu item or move character cursor / Push = enter or save</td>
+    </tr>
+    <tr>
+      <td><strong>[MAIN DIAL]</strong></td>
+      <td>Select characters while editing BCN TXT</td>
+    </tr>
+    <tr>
+      <td><strong>MODE</strong></td>
+      <td>Set CW before sending</td>
+    </tr>
+    <tr>
+      <td><strong>[C.S/VOICE]</strong></td>
+      <td>Start or stop the assigned PLAY memory</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ============================================================ -->
+<div class="page-break"></div>
+<h2>5. Enable the extended menu</h2>
+
+<ol class="steps">
+  <li>Hold <strong>[F]</strong> one second to enter Menu mode.</li>
+  <li>Turn <strong>[DSP/SEL]</strong> to <strong>EXT MNU</strong>.</li>
+  <li>Press <strong>[DSP/SEL]</strong>.</li>
+  <li>Turn <strong>[DSP/SEL]</strong> to <strong>ON</strong>.</li>
+  <li>Press <strong>[DSP/SEL]</strong>.</li>
+  <li>Hold <strong>[F]</strong> one second to exit.</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2>6. Clear the three beacon banks</h2>
+
+<p>Clear before every new event so ghost characters cannot corrupt spaces or chaining.</p>
+
+<ol class="steps">
+  <li>Hold <strong>[F]</strong> one second. Select <strong>BCN TXT</strong>. Press <strong>[DSP/SEL]</strong>.</li>
+  <li>Turn <strong>[MAIN DIAL]</strong> to bank <strong>1:</strong>.</li>
+  <li>Turn <strong>[DSP/SEL]</strong> one click clockwise to edit.</li>
+  <li>For every character slot in the bank: set a space with <strong>[MAIN DIAL]</strong>, then advance with <strong>[DSP/SEL]</strong> clockwise.</li>
+  <li>Return to bank selection. Repeat for banks <strong>2:</strong> and <strong>3:</strong>.</li>
+  <li>Hold <strong>[F]</strong> one second to save and exit.</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2>7. Program a bank</h2>
+
+<ol class="steps">
+  <li>Hold <strong>[F]</strong> one second. Select <strong>BCN TXT</strong>. Press <strong>[DSP/SEL]</strong>.</li>
+  <li>Turn <strong>[MAIN DIAL]</strong> to the desired bank (<strong>1:</strong>, <strong>2:</strong>, or <strong>3:</strong>).</li>
+  <li>Turn <strong>[DSP/SEL]</strong> one click clockwise to edit.</li>
+  <li>For each character of the message:
+    <ol>
+      <li>Turn <strong>[MAIN DIAL]</strong> to the letter, number, or space.</li>
+      <li>Turn <strong>[DSP/SEL]</strong> one click clockwise to advance.</li>
+    </ol>
+  </li>
+  <li>Stop on the last real letter of the message.</li>
+  <li>Confirm the next slot is a space, not →.</li>
+  <li>Hold <strong>[F]</strong> one second to save and exit.</li>
+</ol>
+
+<p>Example — Bank 1 entry order:</p>
+<div class="msg">V E 1 N B [space] V E 1 N B [space] V E 1 N B [space] D E [space] V E 0 C N M [space] K</div>
+
+<p>Example — Bank 2 entry order:</p>
+<div class="msg">V E 1 N B [space] D E [space] V E 0 C N M [space] N I L [space] 7 3 [space] S K</div>
+
+<!-- ============================================================ -->
+<h2>8. Set CW speed</h2>
+
+<ol class="steps">
+  <li>Hold <strong>[F]</strong> one second. Select <strong>CWSPEED</strong>. Press <strong>[DSP/SEL]</strong>.</li>
+  <li>Turn <strong>[DSP/SEL]</strong> to the desired speed in WPM.</li>
+  <li>If the display shows CPM, press <strong>[F]</strong> once to switch to WPM, then set the speed.</li>
+  <li>Press <strong>[DSP/SEL]</strong> to lock.</li>
+  <li>Hold <strong>[F]</strong> one second to exit.</li>
+</ol>
+
+<p>Suggested Silent Key / Final Call speed: <strong>12 WPM</strong>.</p>
+
+<!-- ============================================================ -->
+<h2>9. Set one-shot play (no timed repeat)</h2>
+
+<ol class="steps">
+  <li>Hold <strong>[F]</strong> one second. Select <strong>BCN TIM</strong>. Press <strong>[DSP/SEL]</strong>.</li>
+  <li>Turn <strong>[DSP/SEL]</strong> to <strong>OFF</strong>.</li>
+  <li>Press <strong>[DSP/SEL]</strong>.</li>
+  <li>Hold <strong>[F]</strong> one second to exit.</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2>10. Assign PLAY1 / PLAY2 / PLAY3 to the front button</h2>
+
+<p>Only one PLAY assignment is active on <strong>[C.S/VOICE]</strong> at a time. To send Bank 1, assign PLAY1. To send Bank 2 later, change the assignment to PLAY2.</p>
+
+<ol class="steps">
+  <li>Hold <strong>[F]</strong> one second. Select <strong>PNL-C.S</strong>. Press <strong>[DSP/SEL]</strong>.</li>
+  <li>Turn <strong>[DSP/SEL]</strong> to <strong>PLAY1</strong>, <strong>PLAY2</strong>, or <strong>PLAY3</strong>.</li>
+  <li>Press <strong>[DSP/SEL]</strong>.</li>
+  <li>Hold <strong>[F]</strong> one second to exit.</li>
+</ol>
+
+<!-- ============================================================ -->
+<div class="page-break"></div>
+<h2>11. Send a bank</h2>
+
+<ol class="steps">
+  <li>Set <strong>MODE</strong> to <strong>CW</strong>.</li>
+  <li>Confirm <strong>PNL-C.S</strong> is set to the desired PLAY bank.</li>
+  <li>Press <strong>[C.S/VOICE]</strong> once to start.</li>
+  <li>Press <strong>[C.S/VOICE]</strong> again to stop if needed.</li>
+</ol>
+
+<p>Expected result with no → at the end of the bank: the selected bank plays once and stops.</p>
+
+<!-- ============================================================ -->
+<h2>12. If Bank 1 runs straight into Bank 2</h2>
+
+<ol class="steps">
+  <li>Open <strong>BCN TXT</strong> for bank <strong>1:</strong>.</li>
+  <li>Step to the character after the last letter of the message.</li>
+  <li>Change → to a space.</li>
+  <li>Repeat for bank <strong>2:</strong> if → is present after its last letter.</li>
+  <li>Save, set <strong>PNL-C.S = PLAY1</strong>, mode <strong>CW</strong>, and play again. Bank 1 must stop on its own.</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2>13. Suggested Silent Key on-air order</h2>
+
+<ol class="steps">
+  <li>Voice Final Call on SSB (three calls; nothing heard; 73).</li>
+  <li>Switch to <strong>CW</strong>. Confirm <strong>PNL-C.S = PLAY1</strong>.</li>
+  <li>Press <strong>[C.S/VOICE]</strong> — Bank 1 Final Call.</li>
+  <li>Observe silence after Bank 1 finishes.</li>
+  <li>Change <strong>PNL-C.S</strong> to <strong>PLAY2</strong>.</li>
+  <li>Press <strong>[C.S/VOICE]</strong> — Bank 2 closing (NIL 73 SK).</li>
+</ol>
+
+<p>Example voice outline:</p>
+<div class="box">
+  <p>This is [YOURCALL], [station name if used].</p>
+  <p>Calling [name], [SKCALL].</p>
+  <p>[SKCALL], this is [YOURCALL].</p>
+  <p>[pause]</p>
+  <p>[SKCALL], [SKCALL], this is [YOURCALL].</p>
+  <p>[pause]</p>
+  <p>[SKCALL], [SKCALL], [SKCALL], this is [YOURCALL].</p>
+  <p>[pause]</p>
+  <p>Nothing heard.</p>
+  <p>[Name], [SKCALL], is acknowledged as a Silent Key.</p>
+  <p>From [YOURCALL]: 73.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>14. Quick checklist</h2>
+
+<ul class="check">
+  <li>EXT MNU = ON</li>
+  <li>Banks 1–3 cleared to spaces (ghost characters removed)</li>
+  <li>Bank texts entered; no → after the last letter of each bank</li>
+  <li>CWSPEED set (12 WPM typical for Final Call)</li>
+  <li>BCN TIM = OFF</li>
+  <li>PLAY1 tested: plays and stops</li>
+  <li>PLAY2 tested: plays and stops</li>
+  <li>PNL-C.S left on PLAY1 if Bank 1 is the first CW send</li>
+</ul>
+
+<div class="box">
+  <p><strong>This event’s callsigns</strong></p>
+  <p>SK callsign: _________________________________</p>
+  <p>Transmitting callsign: ________________________</p>
+  <p>Bank 1 text: _________________________________</p>
+  <p>Bank 2 text: _________________________________</p>
+  <p>CW speed: ________ WPM</p>
+</div>
+
+<div class="footer">
+  <p>Yaesu FT-450 / FT-450D CW Beacon aide-mémoire. → chains to the next bank; omit it for separate PLAY1 / PLAY2 sends. Clear banks to spaces before reprogramming to remove ghost characters. Complements the OEM operating manual BCN TXT / BCN TIM / PNL-C.S sections.</p>
+</div>
+
+</body>
+</html>

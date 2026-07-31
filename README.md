@@ -24,6 +24,7 @@ Educational operating manuals and training topics for amateur radio members.
 | Kenwood TH-D72A | [radios/Kenwood-TH-D72A](radios/Kenwood-TH-D72A/) |
 | Kenwood TH-G71A | [radios/Kenwood-TH-G71A](radios/Kenwood-TH-G71A/) |
 | Motorola GM300 | [radios/Motorola-GM300](radios/Motorola-GM300/) |
+| Yaesu FT-450 / FT-450D | [radios/Yaesu-FT-450](radios/Yaesu-FT-450/) |
 | Yaesu FT-710 | [radios/Yaesu-FT-710](radios/Yaesu-FT-710/) |
 | Yaesu FT-5DR | [radios/Yaesu-FT-5DR](radios/Yaesu-FT-5DR/) |
 | Yaesu FT-2600M | [radios/Yaesu-FT-2600M](radios/Yaesu-FT-2600M/) |
