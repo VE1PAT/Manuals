@@ -1,8 +1,8 @@
 # CPS 1.45 — Digital section walkthrough (DM-32UV)
 
 **Software:** Baofeng CPS DMR **V1.45** (club standard — do not use 1.60 for the shared baseline yet)  
-**Goal:** Build / maintain the club digital baseline for VE1DRR loaners  
-**Audience:** Codeplug custodian (not the casual borrower)
+**Goal:** Build / maintain the club digital baseline for VE1DRR  
+**Audience:** Members maintaining the shared codeplug (not everyday operators)
 
 This guide matches the **Digital** tree in CPS 1.45:
 
@@ -34,15 +34,15 @@ Work order that avoids frustration:
 DMR ID  →  Talk Groups  →  RX Group List  →  (Public) Channels  →  Zones  →  Save  →  Write
 ```
 
-Leave **CSV Contacts**, **Emergency**, **Encrypt**, and **Quick Text** until the radio already keys VE1DRR correctly — or skip them for loaners.
+Leave **CSV Contacts**, **Emergency**, **Encrypt**, and **Quick Text** until the radio already keys VE1DRR correctly — or skip them for a simple training codeplug.
 
 ---
 
 ## Map: what each Digital item actually is
 
-| CPS 1.45 item | Plain English | Needed for club loaners? |
+| CPS 1.45 item | Plain English | Needed for a training codeplug? |
 |---|---|---|
-| **DMR ID** | *Your* radio identity on the network (number + name) | **Yes — every borrower** |
+| **DMR ID** | Operator radio identity on the network (number + name) | **Yes — each operator’s own ID** |
 | **Talk Groups** | Address book of **call targets** used as **TX Contact** on channels (group *and* private) | **Yes** |
 | **CSV Contacts** | Huge name lookup list (who is calling you) | Optional |
 | **RX Group List** | Which **group** calls this channel will **hear** | **Yes** (or you only hear your TX TG) |
@@ -69,33 +69,24 @@ If a guide says “add a contact for talkgroup 91”, in CPS 1.45 that means **D
 
 ### What it does
 
-Every DMR transmission tags your radio with this number. BrandMeister and other users see it. Wrong leftover ID = transmitting as the previous borrower.
+Every DMR transmission tags your radio with this number. BrandMeister and other users see it. Always use **your** RadioID before transmitting on DMR.
 
-### Club baseline (idle loaner)
-
-| Field | Value |
-|---|---|
-| ID | Club placeholder policy (empty/disabled policy — or a non-personal placeholder the custodian defines) |
-| Name | e.g. `CLUB LOANER` |
-
-### At checkout (borrower)
+### When you use the radio
 
 | Field | Value |
 |---|---|
-| ID | Borrower’s number from radioid.net |
-| Name | Borrower’s callsign (e.g. `VE1ABC`) |
+| ID | Your number from radioid.net |
+| Name | Your callsign (e.g. `VE1ABC`) |
 
 ### Steps
 
 1. Open **Digital → DMR ID**.  
 2. Double-click row 1.  
 3. Set **ID** and **Name**.  
-4. Delete or clear extra rows that belong to old users.  
+4. Delete or clear extra rows that are not yours.  
 5. OK → Save As.
 
-**Loaner rule:** one active personal ID only while checked out; restore baseline on return.
-
-You can have multiple DMR ID rows for advanced use; loaners should not need that.
+You can have multiple DMR ID rows for advanced use; most operators need only one.
 
 ---
 
@@ -110,7 +101,7 @@ Creates the selectable **TX Contact** entries for digital channels. Despite the 
 - **Group Call** entries (real talkgroups: 30205, 4000, …)  
 - **Private Call** entries (parrot 9990, a friend’s DMR ID, APRS gateway 302999, …)
 
-### Create these for the club baseline
+### Create these for VE1DRR operation
 
 Double-click an empty row (or Add), fill, OK. Repeat.
 
@@ -142,20 +133,20 @@ When channels are built (later), each digital channel’s **TX Contact** points 
 
 Optional “phone book.” When someone private-calls or appears on the air, the radio can show **callsign / city** instead of only a number — *if* that ID is in this list.
 
-### Loaner recommendation
+### Recommendation
 
 | Approach | When |
 |---|---|
-| **Leave empty / untouched** | Simplest loaners; less CPS pain |
+| **Leave empty / untouched** | Simplest training codeplug; less CPS pain |
 | Import a trimmed regional CSV later | Nice-to-have after VE1DRR works |
 
 ### If you import
 
 1. Use a CSV format the CPS expects (RadioID-style exports; columns must match what 1.45 offers under import).  
-2. Prefer a **small** Atlantic / Canada extract over a full world dump on loaners (write time + confusion).  
+2. Prefer a **small** Atlantic / Canada extract over a full world dump (write time + confusion).  
 3. CSV Contacts do **not** replace Talk Groups. You still need Talk Groups for TX Contact.
 
-Borrowers can still Manual Dial a raw DMR ID without CSV Contacts.
+Operators can still Manual Dial a raw DMR ID without CSV Contacts.
 
 ---
 
@@ -191,7 +182,7 @@ Do **not** put Private Call entries (Parrot, APRS) in an RX group list — those
 
 4. Later, on each VE1DRR-* channel (**Public → Channel**), set **RX Group List** = this list.
 
-### Practical loaner policy
+### Practical policy
 
 | Policy | Effect |
 |---|---|
@@ -210,7 +201,7 @@ Do **not** put Private Call entries (Parrot, APRS) in an RX group list — those
 
 Commercial-style emergency alarm / emergency call configurations (panic, emergency indicator, related channel behaviour).
 
-### Club loaner action
+### Club action
 
 **Do not configure. Do not assign to channels.**  
 
@@ -226,11 +217,11 @@ Leave factory defaults / empty. Skip any guide that starts with “set up Emerge
 
 AES / ARC4 / custom key storage for encrypted digital voice.
 
-### Club loaner action
+### Club action
 
 **Leave empty. Do not enable Encryption on any amateur channel.**
 
-Encrypted amateur transmissions are not appropriate for normal HARC/DARC loaner use and conflict with typical amateur rules/expectations. Ignore tactical/YouTube encryption tutorials for this fleet.
+Encrypted amateur transmissions are not appropriate for normal HARC/DARC use and conflict with typical amateur rules/expectations. Ignore tactical/YouTube encryption tutorials for training on this radio.
 
 ---
 
@@ -242,15 +233,15 @@ Encrypted amateur transmissions are not appropriate for normal HARC/DARC loaner 
 
 Pre-written DMR SMS strings (canned messages) you can send quickly from the radio menu.
 
-### Club loaner action
+### Club action
 
 **Optional.** Examples if you want them later:
 
 - `QRZ?`  
 - `QSY Atlantic 30205`  
-- `Testing loaner radio`
+- `Testing DM-32UV`
 
-Not required for voice nets on VE1DRR. APRS position beacons are **not** configured here (that is APRS / Option Feature / BrandMeister SelfCare — see loaner manual Chapter 10).
+Not required for voice nets on VE1DRR. APRS position beacons are **not** configured here (that is APRS / Option Feature / BrandMeister SelfCare — see operating manual Chapter 10).
 
 ---
 
@@ -277,7 +268,7 @@ Digital entries do nothing on the air until **Public → Channel** (and **Zone**
 | Emergency | None |
 | DMR ID | Usually the radio’s active ID (row from Digital → DMR ID) |
 
-Full recommended set: [`recommended-ve1drr-channels.md`](recommended-ve1drr-channels.md)
+Full recommended set: [`reference/recommended-ve1drr-channels.md`](reference/recommended-ve1drr-channels.md)
 
 ### Zone
 
@@ -285,18 +276,18 @@ Full recommended set: [`recommended-ve1drr-channels.md`](recommended-ve1drr-chan
 
 ### Save / Write
 
-1. **File → Save As** dated club baseline.  
+1. **File → Save As** dated training codeplug.  
 2. **Program → Write data**.  
 3. Test: 30205, group **4000** drop, parrot **9990**, analog still OK.
 
 ---
 
-## Custodian “Digital only” checklist
+## Digital-section checklist
 
 | Done | Step |
 |:---:|---|
 | ☐ | Read radio; Save As backup |
-| ☐ | **DMR ID** set (placeholder or borrower) |
+| ☐ | **DMR ID** set to the operator’s RadioID |
 | ☐ | **Talk Groups** created (30205, 3021, 302, 91, 4000 group, 9990 private) |
 | ☐ | **RX Group List** includes those group TGs |
 | ☐ | **CSV Contacts** skipped or imported on purpose |
@@ -317,7 +308,7 @@ Full recommended set: [`recommended-ve1drr-channels.md`](recommended-ve1drr-chan
 | “Rx Group” / “Receive Group” | **RX Group List** |
 | “Radio ID” | **DMR ID** |
 | “Privacy” / “Basic Privacy” | **Digital Encrypt Systems** (skip on ham) |
-| “Emergency” | **Digital Emergency Systems** (skip for loaners) |
+| “Emergency” | **Digital Emergency Systems** (skip for training codeplugs) |
 | AnyTone / CPS menus | Different product — ignore label mapping |
 
 Stick to the left-hand **Digital** tree in **V1.45** and this order: **ID → Talk Groups → RX Group List → Channels → Zones**.
@@ -328,6 +319,6 @@ Stick to the left-hand **Digital** tree in **V1.45** and this order: **ID → Ta
 
 | File | Role |
 |---|---|
-| [`../DM-32UV-Loaner-Manual.md`](../DM-32UV-Loaner-Manual.md) | Borrower-facing handbook |
-| [`recommended-ve1drr-channels.md`](recommended-ve1drr-channels.md) | Exact VE1DRR channel / contact table |
-| [`baseline-channels-sanitized.csv`](baseline-channels-sanitized.csv) | Current sanitized channel map |
+| [`DM-32UV-Operating-Manual.md`](DM-32UV-Operating-Manual.md) | Student / operator handbook |
+| [`reference/recommended-ve1drr-channels.md`](reference/recommended-ve1drr-channels.md) | Exact VE1DRR channel / contact table |
+| [`reference/baseline-channels-sanitized.csv`](reference/baseline-channels-sanitized.csv) | Current sanitized channel map |

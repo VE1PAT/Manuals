@@ -1,23 +1,24 @@
 # Halifax & Dartmouth Amateur Radio Clubs  
-# DM-32UV Loaner Manual
+# DM-32UV Operating Manual
 
-**Baofeng DM-32UV — club loaner handbook**  
-From zero to on-air on local analog repeaters and **VE1DRR** DMR
+**Baofeng DM-32UV — how to get on the air**  
+From zero to working on local analog repeaters and **VE1DRR** DMR
 
 | | |
 |---|---|
-| **Document** | HARC / DARC DM-32UV Loaner Manual |
-| **Audience** | Licensed amateurs borrowing a club DM-32UV |
+| **Document** | HARC / DARC DM-32UV Operating Manual |
+| **Audience** | Licensed amateurs learning the Baofeng DM-32UV |
 | **Assumes** | You have a valid Canadian amateur licence and callsign |
 | **Radio** | Baofeng DM-32UV (analog + DMR Tier II, GPS, digital APRS) |
-| **Companion** | `Loaner-Checkout-Return-Checklist.md` (keep a copy in the radio bag) |
-| **Version** | 0.3 |
+| **Version** | 0.5 |
+
+**Scope:** Club **education** — how to operate and program the DM-32UV for local analog and VE1DRR DMR.
 
 ### Publication and privacy
 
 - This handbook has **no personal author byline**. Do not add individual names, callsigns, emails, or home paths to distributed copies.
 - When exporting to PDF, DOCX, or print tooling, leave **Author / Manager / Company / Keywords** metadata **blank**. Do not embed club or personal identity in file properties.
-- Do not distribute personal `.data` codeplugs. Loaners use a shared **club baseline** with the borrower’s DMR ID written only for the loan period (Chapters 4 and 11).
+- Do not distribute personal `.data` codeplugs in shared folders or this repo.
 
 Sources used while compiling this handbook are listed in **Annex F**.
 
@@ -26,7 +27,7 @@ Sources used while compiling this handbook are listed in **Annex F**.
 ## How to use this book
 
 Read **Chapters 1–7** before you transmit on DMR.  
-That gets you from “radio in the bag” to a working ID on **VE1DRR**.
+That gets you from first power-on to a working ID on **VE1DRR**.
 
 | If you want to… | Go to |
 |---|---|
@@ -34,38 +35,36 @@ That gets you from “radio in the bag” to a working ID on **VE1DRR**.
 | Change or **leave** a talkgroup (incl. **4000**) | Chapter 8 (**important** for this codeplug) |
 | Call one person by DMR ID | Chapter 9 |
 | Send your position (APRS) | Chapter 10 |
-| Fix common problems | Chapter 12 |
-| Return the radio cleanly | Chapter 11 |
+| Fix common problems | Chapter 11 |
 | See what is actually programmed | Appendix B |
 
 **Important:** Menu labels can vary slightly by firmware. Paths below match the official DM-32UV manual and CPS practice. If a label differs, look for the same idea (Talk Group, Manual Dial, Contacts, APRS, GPS).
 
 ---
 
-## Chapter 1 — What’s in the loaner kit
+## Chapter 1 — What you’re working with
 
-Typical contents (confirm against the bag checklist):
+For this course of study you need:
 
-1. Baofeng **DM-32UV** handheld  
+1. A Baofeng **DM-32UV** handheld  
 2. Battery and antenna  
 3. USB-C charger and/or drop-in charger  
 4. Kenwood-style **2-pin programming cable** (USB)  
-5. This manual and the checkout/return checklist  
-6. Club **baseline codeplug**: metro analog, marine weather (RX), and DMR starters including **VE1DRR**
+5. A Windows PC with Baofeng **CPS 1.45**  
+6. A **codeplug** with metro analog, marine weather (RX), and DMR starters including **VE1DRR** (Appendix B describes a working regional example)
 
-### What is already done for you
+### What a good regional codeplug already includes
 
 - Local **analog** repeaters (see Appendix B).  
 - **VE1DRR** digital channel (443.750 / 448.750, color code **1**, time slot **2**) with TX contact **ATL Canada** (talkgroup **30205**).  
-- Additional DMR memories for other Atlantic-area machines and an optional hotspot simplex channel (if present on your loaner).  
+- Additional DMR memories for other Atlantic-area machines and an optional hotspot simplex channel (if present).  
 - Marine continuous-broadcast / weather-related channels programmed **receive-oriented** (transmit inhibited in the working codeplug).
 
-### What you must do
+### What you must do to operate on DMR
 
 1. Get your own DMR ID (Chapter 3).  
 2. Optionally create a BrandMeister account (Chapter 5 — needed for APRS SelfCare).  
-3. Write **your** DMR ID into the radio (Chapter 4).  
-4. On return: remove your ID / restore the club baseline (Chapter 11).
+3. Write **your** DMR ID into the radio (Chapter 4).
 
 ### Codeplug reality check (read this)
 
@@ -147,10 +146,10 @@ BrandMeister uses the worldwide **DMR ID** issued by [radioid.net](https://radio
 
 ---
 
-## Chapter 4 — Put your DMR ID into the loaner (CPS)
+## Chapter 4 — Put your DMR ID into the radio (CPS)
 
 You need a Windows PC and the programming cable.  
-**Do not use CHIRP.** Use Baofeng **CPS** for the DM-32UV (official download area).
+**Do not use CHIRP.** Use Baofeng **CPS** for the DM-32UV (official download area). Club standard: **CPS 1.45**.
 
 ### Golden rules
 
@@ -165,12 +164,14 @@ You need a Windows PC and the programming cable.
 2. Power on the radio; connect the cable.  
 3. CPS: **Setting → COM Setting** → choose the COM port that appeared when the cable was plugged in.  
 4. **Program → Read data**.  
-5. **File → Save As** — e.g. `LOANER_backup_before_borrower.data` (no personal home folder paths in shared copies).  
+5. **File → Save As** — e.g. `DM32_backup_before_edit.data`.  
 6. **Digital → DMR ID** → set **ID** = your RadioID number, **Name** = your callsign.  
-7. Clear leftover previous-user ID rows (leave only the current borrower).  
-8. **File → Save As** → `LOANER_borrower_YYYYMMDD.data`.  
+7. Clear leftover ID rows that are not yours.  
+8. **File → Save As** → `DM32_YOURCALL_YYYYMMDD.data`.  
 9. **Program → Write data**.  
 10. Disconnect, reboot, verify.
+
+For the full Digital menu tree in CPS 1.45, see [`CPS-1.45-Digital-Section-Walkthrough.md`](CPS-1.45-Digital-Section-Walkthrough.md).
 
 ---
 
@@ -254,7 +255,7 @@ Environment Canada **Weatheradio** / Hello Weather service for Nova Scotia has b
 3. Channel 16 is for distress and safety — not casual ragchew. Leave TX inhibited.  
 4. For land weather and alerts, use official apps / websites (e.g. WeatherCAN) in addition to radio.
 
-FRS/GMRS-style consumer frequencies are **out of scope** for this club loaner handbook and should not be used under an amateur licence as a substitute for licensed amateur channels.
+FRS/GMRS-style consumer frequencies are **out of scope** for this handbook and should not be used under an amateur licence as a substitute for licensed amateur channels.
 
 ---
 
@@ -286,7 +287,7 @@ Dashboard: [BrandMeister device 302441](https://brandmeister.network/?page=devic
 
 ### Talkgroups you will use most
 
-| TG | Name | How on this loaner |
+| TG | Name | How on this radio |
 |---|---|---|
 | **30205** | Atlantic Canada | Default PTT on **VE1DRR** channel |
 | **3021** | Nova Scotia | Manual Dial group, or **VE1DRR-3021** if programmed |
@@ -406,7 +407,7 @@ Manual Dial group 30205 → PTT
 ### E. Contact list / dedicated channels
 
 - **Contact List** only shows contacts already in the codeplug (baseline: mainly **ATL Canada** until expanded).  
-- Best loaner experience: add dedicated VE1DRR memories for **30205**, **3021**, **302**, **91**, **parrot 9990**, and **Drop 4000** (Appendix B + `reference/recommended-ve1drr-channels.md`). Then switching is: **Drop channel → new TG channel**.
+- Best experience: add dedicated VE1DRR memories for **30205**, **3021**, **302**, **91**, **parrot 9990**, and **Drop 4000** (Appendix B + `reference/recommended-ve1drr-channels.md`). Then switching is: **Drop channel → new TG channel**.
 
 ---
 
@@ -421,7 +422,7 @@ Parrot is a **private** call. Do not confuse it with **4000** (group).
 
 A **private call** goes to one DMR ID, not a talkgroup.
 
-### Method 1 — Manual Dial (usual method on loaners)
+### Method 1 — Manual Dial (usual method)
 
 1. Select a suitable digital channel (often **VE1DRR**).  
 2. Menu → **Talk Group** → **Manual Dial**.  
@@ -467,26 +468,7 @@ Outdoors for GPS fix → VE1DRR (APRS-enabled) → wait for beacon or use an **A
 
 ---
 
-## Chapter 11 — Return the radio (wipe your ID)
-
-### Borrower
-
-1. Clear messages / call logs if available.  
-2. CPS: restore **club baseline** `.data` **or** replace DMR ID with the club placeholder.  
-3. Confirm your callsign is gone from the radio ID.  
-4. Return the full kit; note defects on the checklist.
-
-### Custodian intake
-
-1. Write club baseline codeplug.  
-2. Ensure **no personal DMR ID** remains.  
-3. Charge battery; restock bag; update loaner log.
-
-Never leave the previous member’s personal ID loaded.
-
----
-
-## Chapter 12 — Troubleshooting
+## Chapter 11 — Troubleshooting
 
 | Symptom | Likely cause | What to try |
 |---|---|---|
@@ -497,11 +479,11 @@ Never leave the previous member’s personal ID loaded.
 | Hear digital, can’t reply | Slot / TG / CC | Confirm Slot 2 on VE1DRR; try parrot 9990 |
 | Nothing on VE1DRR | Range / antenna / CC | Move; confirm CC 1 |
 | Parrot silent | Not private 9990 | Manual Dial private `9990` |
-| Chinese menus | File → New used | Restore club baseline |
+| Chinese menus | File → New used | Restore a known-good English `.data` (Read from a good radio, or a saved training codeplug) |
 | CPS fail | Cable / COM | Other USB port; known-good cable |
 | APRS missing | SMS / GPS / SelfCare | Chapter 10 |
-| Weather channel keys up TX | TX not inhibited | Stop; restore baseline; report defect |
-| VE1MTT useless | Bad RX frequency in memory | Use other VHF; ask custodian to fix baseline |
+| Weather channel keys up TX | TX not inhibited | Stop; do not transmit; ask an Elmer to fix the codeplug |
+| VE1MTT useless | Bad RX frequency in memory | Use other VHF; ask an Elmer to fix the baseline |
 
 ### Hotspot note
 
@@ -509,7 +491,7 @@ Channel **ATL CDA DMR** (446.960 simplex) is a typical hotspot memory. Hotspot c
 
 ---
 
-## Chapter 13 — Etiquette and good habits
+## Chapter 12 — Etiquette and good habits
 
 1. Listen before transmit.  
 2. Lowest power that works.  
@@ -518,7 +500,7 @@ Channel **ATL CDA DMR** (446.960 simplex) is a typical hotspot memory. Hotspot c
 5. ID with your callsign.  
 6. No encryption / disable / remote-monitor experiments on the air.  
 7. Marine channels = **listen only**.  
-8. Return the radio with **your ID removed**.
+8. Transmit DMR only with **your** RadioID programmed (Chapter 4).
 
 ---
 
@@ -559,7 +541,7 @@ Channel **ATL CDA DMR** (446.960 simplex) is a typical hotspot memory. Hotspot c
 
 ---
 
-## Appendix B — Working baseline channel map (loaner)
+## Appendix B — Working baseline channel map
 
 Sanitized from the March 2026 working export used to build this handbook. Personal DMR IDs removed. FRS/GMRS omitted.
 
@@ -594,7 +576,7 @@ Digital menu meanings (CPS 1.45): [`CPS-1.45-Digital-Section-Walkthrough.md`](CP
 | VE1MHR (~147.030), VE1ESR (~145.450) | Eastern Shore coverage |
 | RX **and** TX CTCSS where required | Some memories only had decode tone set |
 
-Always verify additions against current trustee / directory listings before writing loaners.
+Always verify additions against current trustee / directory listings before writing radios.
 
 ---
 
@@ -605,7 +587,7 @@ Always verify additions against current trustee / directory listings before writ
 | VE1MTT | 147.045+ | Fix/replace bad memory |
 | VE1MHR | 147.030 | Musquodoboit Harbour area |
 | VE1ESR | 145.450 | Sheet Harbour area |
-| VE1PSR 6 m | 53.550− (tone often 151.4) | Only if loaner policy includes 6 m |
+| VE1PSR 6 m | 53.550− (tone often 151.4) | Only if the club codeplug includes 6 m |
 
 ---
 
@@ -633,6 +615,8 @@ Always verify additions against current trustee / directory listings before writ
 | 0.1 | 2026-07-30 | Initial chapter draft |
 | 0.2 | 2026-07-30 | Working channel map; Manual Dial emphasis; marine WX; sources annex; privacy/metadata note |
 | 0.3 | 2026-07-30 | BrandMeister **group 4000** leave/join workflow; recommended VE1DRR channel set |
+| 0.4 | 2026-07-31 | Renamed to Operating Manual; equipment logistics removed from docs |
+| 0.5 | 2026-07-31 | Reframed as club education / training materials |
 
 Update Appendix B whenever the shared baseline codeplug changes.
 
@@ -647,7 +631,7 @@ This handbook is **original club training material**. It combines public technic
 | Source | What was used |
 |---|---|
 | Baofeng **DM-32UV User Manual** (manufacturer PDF) | Menu concepts; Manual Dial / Contacts / private vs group call behaviour; APRS menu terminology; feature list (GPS, digital APRS via DMR SMS, no claim of FM AFSK APRS) |
-| Jay Farlow, W9LW — “Programming the Baofeng DM-32UV” series (baofengradio.com blog, Parts 1–7) | CPS workflow warnings (especially avoid **File → New** / Chinese menus); BrandMeister APRS/SMS setup pattern (M-SMS + SelfCare brand); general codeplug teaching order. **Not copied verbatim**; procedures were rewritten for loaner/club use |
+| Jay Farlow, W9LW — “Programming the Baofeng DM-32UV” series (baofengradio.com blog, Parts 1–7) | CPS workflow warnings (especially avoid **File → New** / Chinese menus); BrandMeister APRS/SMS setup pattern (M-SMS + SelfCare brand); general codeplug teaching order. **Not copied verbatim**; procedures were rewritten for club training use |
 | BrandMeister Canada wiki | Talkgroup numbers (302, 3021, 30205, etc.); ARS/GPS ID **302999**; VE1DRR listing (302441, 443.750, CC 1, +5 MHz) |
 | BrandMeister / community DMR operating notes on TG **4000** | Disconnect is a **group call** to 4000 for dynamic talkgroups (not the same as private-call reflector unlink); static TGs are unaffected; use a gap and a firm PTT so the network registers the drop |
 | BrandMeister network device page for 302441 | Cross-check of VE1DRR network presence |
@@ -662,7 +646,7 @@ This handbook is **original club training material**. It combines public technic
 ### Fair-use / originality statement
 
 - Quoting of third-party text has been avoided in favour of paraphrased operational instructions.  
-- Where a unique procedural insight originates with Farlow’s series (notably the **File → New → Chinese menus** CPS hazard and BrandMeister APRS field choices), that debt is acknowledged above; the loaner-oriented narrative, checklists, and regional chapters are new composition.  
+- Where a unique procedural insight originates with Farlow’s series (notably the **File → New → Chinese menus** CPS hazard and BrandMeister APRS field choices), that debt is acknowledged above; the operating narrative and regional chapters are new composition.  
 - Manufacturer menu names are used as technical terms of art.  
 - Club websites are cited for schedule and repeater identity facts, not reproduced as pages.
 
@@ -674,4 +658,4 @@ This handbook is **original club training material**. It combines public technic
 
 ---
 
-*Independent training material for local club loaner use. Not affiliated with or endorsed by Baofeng, BrandMeister, or RadioID.net.*
+*Independent educational material for Halifax & Dartmouth Amateur Radio Clubs. Not affiliated with or endorsed by Baofeng, BrandMeister, or RadioID.net.*

@@ -1,6 +1,6 @@
 # Recommended VE1DRR channel set (CPS)
 
-Add these to the **shared club baseline** so loaner users can join/leave talkgroups with the channel knob instead of only Manual Dial.
+Add these to a **training / regional codeplug** so students can join/leave talkgroups with the channel knob instead of only Manual Dial.
 
 All rows use the same RF plant as channel **VE1DRR** in the working export.
 
@@ -54,7 +54,7 @@ Put all `VE1DRR-*` channels in one zone (e.g. **VE1DRR** or **DMR Metro**), in t
 5. VE1DRR-Parrot  
 6. **VE1DRR-Drop**
 
-## 4. How borrowers use the new set
+## 4. How operators use the new set
 
 | Goal | Action |
 |---|---|
@@ -63,12 +63,12 @@ Put all `VE1DRR-*` channels in one zone (e.g. **VE1DRR** or **DMR Metro**), in t
 | Move to NS | **Drop** first → then **VE1DRR-3021** → PTT |
 | Radio check | **VE1DRR-Parrot** → PTT → listen for echo |
 
-Without these memories, use Manual Dial as in Chapter 8 of the loaner manual (group **4000**, then group **new TG**).
+Without these memories, use Manual Dial as in Chapter 8 of the operating manual (group **4000**, then group **new TG**).
 
 ## 5. After editing
 
-1. Save baseline as a new dated `.data` file (club PC only).  
+1. Save the codeplug as a new dated `.data` file.  
 2. Write to a test radio; confirm Drop and 30205.  
-3. Write to loaners; retire old baseline copies.
+3. Use that file as the class / regional example going forward.
 
 Do not commit personal `.data` files to the manuals repo.

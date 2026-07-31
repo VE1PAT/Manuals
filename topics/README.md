@@ -1,6 +1,6 @@
 # Topics
 
-Non-radio training manuals for Halifax & Dartmouth Amateur Radio Clubs.
+Non-radio educational manuals for Halifax & Dartmouth Amateur Radio Clubs.
 
 Add one subfolder per topic when ready, for example:
 
