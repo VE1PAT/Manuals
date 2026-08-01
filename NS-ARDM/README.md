@@ -1,0 +1,21 @@
+# NS-ARDM
+
+Procedures for **NS-ARDM** Proxmox jumpboxes (desktop PCs running Proxmox VE with Windows, Linux, and AREDN VMs).
+
+**Platform assumed:** Proxmox Virtual Environment **9.2.x** (Debian Trixie-based).
+
+## Documents
+
+| File | Purpose |
+|------|---------|
+| [`01-Update-Proxmox-No-Subscription.md`](01-Update-Proxmox-No-Subscription.md) | Enable free update repos and apply updates |
+| [`02-Proper-Shutdown.md`](02-Proper-Shutdown.md) | Shut down guest VMs, then the jumpbox |
+| [`03-Connect-to-Jumpbox.md`](03-Connect-to-Jumpbox.md) | Reach the Proxmox UI and open guest VMs |
+
+## Terms used in these docs
+
+| Term | Meaning |
+|------|---------|
+| **Jumpbox** | The physical computer running Proxmox VE |
+| **Guest / VM** | A virtual machine on that jumpbox (Windows, Linux, AREDN, etc.) |
+| **Proxmox UI** | Web admin at `https://JUMPBOX-IP:8006` |

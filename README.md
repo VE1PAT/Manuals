@@ -11,6 +11,7 @@ Educational operating manuals and training topics for amateur radio members.
 | `radios/` | Radio-specific how-to manuals (one subfolder per model) |
 | `antennas/` | Antenna / accessory training manuals |
 | `topics/` | Cross-radio / non-radio training (PC connectivity, licensing, nets, EmComm, etc.) |
+| `NS-ARDM/` | NS-ARDM Proxmox jumpbox procedures |
 
 ## Radios
 
@@ -37,6 +38,12 @@ Educational operating manuals and training topics for amateur radio members.
 |-------|--------|
 | Miracle Whip | [antennas/Miracle-Whip](antennas/Miracle-Whip/) |
 | Yaesu ATAS-120A | [antennas/Yaesu-ATAS-120A](antennas/Yaesu-ATAS-120A/) |
+
+## NS-ARDM
+
+| Topic | Folder |
+|-------|--------|
+| Proxmox jumpbox (update, shutdown, connect) | [NS-ARDM](NS-ARDM/) |
 
 ## Conventions
 
