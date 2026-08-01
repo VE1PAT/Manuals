@@ -43,7 +43,7 @@ Educational operating manuals and training topics for amateur radio members.
 
 | Topic | Folder |
 |-------|--------|
-| Proxmox jumpbox (update, shutdown, connect) | [NS-ARDM](NS-ARDM/) |
+| Proxmox jumpbox + AREDN VMs | [NS-ARDM](NS-ARDM/) |
 
 ## Conventions
 
