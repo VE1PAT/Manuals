@@ -102,7 +102,7 @@ ssh USER@GUEST-IP
 1. Start the AREDN VM.  
 2. Find the **AREDN guest IP** (Step 5) — or use Console.  
 3. In a browser (from a PC that can reach that IP), open `http://GUEST-IP/` (or the address your AREDN build uses).  
-4. For halt/shutdown later, see `02-Proper-Shutdown.md`.
+4. For halt/shutdown later, see `03-Proper-Shutdown.md`.
 
 ---
 

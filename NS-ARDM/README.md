@@ -8,9 +8,9 @@ Procedures for **NS-ARDM** Proxmox jumpboxes (desktop PCs running Proxmox VE wit
 
 | File | Purpose |
 |------|---------|
-| [`01-Update-Proxmox-No-Subscription.md`](01-Update-Proxmox-No-Subscription.md) | Enable free update repos and apply updates |
-| [`02-Proper-Shutdown.md`](02-Proper-Shutdown.md) | Shut down guest VMs, then the jumpbox |
-| [`03-Connect-to-Jumpbox.md`](03-Connect-to-Jumpbox.md) | Reach the Proxmox UI and open guest VMs |
+| [`01-Connect-to-Jumpbox.md`](01-Connect-to-Jumpbox.md) | Reach the Proxmox UI and open guest VMs |
+| [`02-Update-Proxmox-No-Subscription.md`](02-Update-Proxmox-No-Subscription.md) | Enable free update repos and apply updates |
+| [`03-Proper-Shutdown.md`](03-Proper-Shutdown.md) | Shut down guest VMs, then the jumpbox |
 
 ## Terms used in these docs
 

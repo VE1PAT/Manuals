@@ -15,7 +15,7 @@ Do this **once** per jumpbox. After that, updating is a short routine.
 
 ## Before you start
 
-1. Prefer a time when VMs can be interrupted (or shut guests down first — see `02-Proper-Shutdown.md`).  
+1. Prefer a time when VMs can be interrupted (or shut guests down first — see `03-Proper-Shutdown.md`).  
 2. You need the Proxmox **root** password (or another account that can use the UI / Shell).  
 3. The jumpbox must be on the internet.  
 4. Know which machine you are updating (the **physical** Proxmox host, not a Windows/Linux guest).
@@ -130,7 +130,7 @@ Do this whenever you are told updates are available, or on a regular schedule.
 4. Review the list.  
 5. Click **Upgrade** (or **Upgrade** in the toolbar — wording can vary slightly).  
 6. A console/task window may open; let it finish. Answer `y` if a package asks a question and you are unsure — when in doubt, keep the default / maintainer choice unless an Elmer directs otherwise.  
-7. If the task says a **reboot is required**, plan a proper shutdown/start of guests (`02-Proper-Shutdown.md`), then reboot the node (**Node → Reboot**) or from Shell: `reboot`.
+7. If the task says a **reboot is required**, plan a proper shutdown/start of guests (`03-Proper-Shutdown.md`), then reboot the node (**Node → Reboot**) or from Shell: `reboot`.
 
 ### From the Shell
 
@@ -152,7 +152,7 @@ reboot
 ## Part C — After updating
 
 1. Confirm the node comes back: open `https://JUMPBOX-IP:8006` again.  
-2. Start any VMs that do not auto-start (see `03-Connect-to-Jumpbox.md`).  
+2. Start any VMs that do not auto-start (see `01-Connect-to-Jumpbox.md`).  
 3. Spot-check important guests (Windows, Linux, AREDN).
 
 Check version anytime:
