@@ -14,6 +14,7 @@ Procedures for **NS-ARDM** Proxmox jumpboxes (desktop PCs running Proxmox VE wit
 | [`04-Create-AREDN-x86-VM.md`](04-Create-AREDN-x86-VM.md) | Create a new AREDN node VM from x86_64 image |
 | [`05-Update-AREDN-VM.md`](05-Update-AREDN-VM.md) | Upgrade firmware on an existing AREDN VM |
 | [`06-Install-Raven.md`](06-Install-Raven.md) | Install Raven chat on a primary AREDN node |
+| [`07-Connect-Nomad-to-Mesh-LAN.md`](07-Connect-Nomad-to-Mesh-LAN.md) | Attach a Project Nomad host to an AREDN LAN |
 
 ## Terms used in these docs
 
