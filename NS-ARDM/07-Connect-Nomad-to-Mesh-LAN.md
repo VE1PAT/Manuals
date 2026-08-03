@@ -136,25 +136,128 @@ More complex; start **single-homed on AREDN LAN** when possible.
 
 ---
 
-## 8. Adapting to your site
+## 8. Example site map (ve1patvm01)
 
-Fill this in for your jumpbox (keeps the doc reusable):
+Captured from Proxmox **System → Network** and AREDN VM **Hardware** screens (PVE 9.2.x). Use as a worked example; re-check with the commands in §9 if hardware moves.
+
+### Proxmox host bridges
+
+| Proxmox name | Type | Bound physical NIC | Notes |
+|--------------|------|--------------------|-------|
+| **nic0** | Network Device | Onboard-style (`enp0s25`; may also show a USB-style alt name) | Slave of **vmbr0** |
+| **nic1** | Network Device | Add-on USB Ethernet (`enx…`) | Slave of **vmbr1** — usual place for a desk cable to Project Nomad |
+| **vmbr0** | Linux Bridge | **nic0** | Home / management path (also used by VE1PAT-01) |
+| **vmbr1** | Linux Bridge | **nic1** | Physical “mesh desk” segment (VE1PAT-00, VE1PAT-02) |
+| **vmbr10** | Linux Bridge | *(none — virtual only)* | Inter-node link fabric inside Proxmox |
+| **vmbr20** | Linux Bridge | *(none — virtual only)* | Extra virtual segment (VE1PAT-01) |
+
+### AREDN VMs → bridges
+
+| VMID | Name | Guest NICs |
+|------|------|------------|
+| **1000** | **VE1PAT-00** | `net0` → **vmbr1** |
+| **1001** | **VE1PAT-01** | `net0` → **vmbr20**; `net1` → **vmbr0**; `net2` → **vmbr10** |
+| **1002** | **VE1PAT-02** | `net0` → **vmbr1**; `net1` → **vmbr10** |
+
+```
+                    ┌─ vmbr20 ── VE1PAT-01 net0
+nic0 ── vmbr0 ──────┼─ (home / Proxmox mgmt / VE1PAT-01 net1)
+                    │
+nic1 ── vmbr1 ──────┼─ VE1PAT-00 net0
+                    └─ VE1PAT-02 net0
+                         ▲
+                         │ Ethernet (add-on NIC)
+                    Project Nomad PC
+
+vmbr10 (no physical port): VE1PAT-01 net2 ↔ VE1PAT-02 net1  (and any other DtD-style peers)
+```
+
+**Nomad implication:** If Nomad is cabled to the **add-on** NIC, it sits on **vmbr1** with **VE1PAT-00** and **VE1PAT-02**. Pick one of those nodes as the **LAN parent** only after confirming (in that node’s AREDN Admin) that the interface on `vmbr1` is actually presenting **LAN** (DHCP for devices), not only DtD/WAN. Virtual bridges `vmbr10` / `vmbr20` never carry a copper cable to Nomad.
+
+Still fill in after first successful attach:
 
 | Item | Your value |
 |------|------------|
-| Proxmox NIC for AREDN LAN | |
-| Bridge / VLAN name | |
-| Primary AREDN node (VM name) | |
+| Primary AREDN LAN node for Nomad | *(VE1PAT-00 or VE1PAT-02 once LAN role is confirmed)* |
 | Nomad MAC / reserved LAN IP | |
 | Advertised service names / ports | |
+
+Host DNS on this example node used search domain `home` and ordinary recursive resolvers for the Proxmox host itself — that is **Proxmox management DNS**, not the mesh DNS Nomad should use once it is on AREDN LAN (then use the node LAN IP / mesh practice).
+
+---
+
+## 9. Commands: map names → physical NICs
+
+Run these in the **Proxmox host shell** (`ve1patvm01` → **Shell**), not inside an AREDN VM.
+
+### Bridge and NIC inventory
+
+```bash
+# What Proxmox thinks the bridges are
+cat /etc/network/interfaces
+
+# Live links: which interfaces are UP, MAC, and master bridge
+ip -br link
+bridge link
+```
+
+Expect something like: `enp0s25` / `nic0` as a slave of `vmbr0`, and the add-on `enx…` / `nic1` as a slave of `vmbr1`.
+
+### Which cable is which (best proof)
+
+1. Note which desk cable goes to Nomad.  
+2. Unplug / replug that cable while watching:
+
+```bash
+# Repeat a few times while you unplug/replug
+ip -br link
+dmesg -T | tail -n 30
+```
+
+The interface whose state flips `DOWN` ↔ `UP` (or shows link messages in `dmesg`) is the physical NIC on that cable. Match its name to the `bridge-ports` line in `/etc/network/interfaces`.
+
+Optional blink (if `ethtool` is installed):
+
+```bash
+ethtool -p enp0s25    # or the enx… name — LED blinks on that port
+```
+
+Stop with `Ctrl+C`.
+
+### Confirm which VMs use that bridge
+
+```bash
+grep -E 'net[0-9]:|bridge=' /etc/pve/qemu-server/*.conf
+```
+
+Or in the UI: each VM → **Hardware** → **Network Device** → `bridge=vmbr…` (same data as §8).
+
+### On Project Nomad (after cable + DHCP)
+
+Linux:
+
+```bash
+ip -br addr
+ip route
+ping -c 3 <AREDN-node-LAN-IP>
+```
+
+Windows (PowerShell):
+
+```powershell
+Get-NetAdapter | Format-Table Name, InterfaceDescription, Status, MacAddress
+Get-NetIPConfiguration
+ping <AREDN-node-LAN-IP>
+```
 
 ---
 
 ## Quick checklist
 
 ```
-[ ] Pick primary AREDN LAN node
-[ ] Bridge node LAN to physical NIC B (or LAN VLAN)
+[ ] Identify add-on NIC ↔ vmbr (link flap / ethtool)
+[ ] Pick primary AREDN LAN node on that bridge
+[ ] Confirm node Admin shows LAN/DHCP on that segment
 [ ] Cable Nomad → that LAN segment
 [ ] Nomad gets LAN IP (DHCP or static + node as gateway)
 [ ] DHCP reservation on the node
